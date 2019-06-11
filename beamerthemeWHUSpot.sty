@@ -2,6 +2,8 @@
 % A beamer theme based on the spots in Wuhan University
 % Author: Tony Xiang
 
+\mode<presentation>
+
 \ProvidesPackage{beamerthemeWHUSpot}
 \RequirePackage{tikz}
 \usetikzlibrary{calc}
@@ -13,45 +15,8 @@
 \setbeamercolor{titlelike}{fg=black}
 \setbeamercolor{frametitle}{fg=black,bg=pink}
 
-\setbeamertemplate{headline}[sidebar theme]
-\setbeamersize{sidebar width left=1cm}
-\setbeamertemplate{sidebar left}
-{
-	\includegraphics[width=1cm,height=1cm]{whulogoblack.eps} \\
-	\begin{tikzpicture}
-		\filldraw[pink] (-1, 0) rectangle (0, \paperheight - 1);
-	\end{tikzpicture}
-}
-
-\setbeamertemplate{navigation symbols}{}
-
 \def\buildingcolor{霜色}
-\def\sakuraoutangle{53}
-\def\sakurainangle{-25}
-\def\sakuraxoffset{0.25}
-\def\sakurayoffset{3.75}
-\def\sakuraoutercolor{嫣红}
-\def\sakurainnercolor{樱桃色}
-\def\sakurafillcolor{嫣红}
-\def\sakurakernelcolor{樱草色}
-
-\setbeamertemplate{qed symbol}
-{
-	\begin{tikzpicture}[scale=.05]
-		\foreach \x in {1,...,5}			
-		{
-			\filldraw[out=\sakuraoutangle,in=\sakurainangle,rotate=-(\x - 1) * 72,\sakuraoutercolor] (0,0) to (\sakuraxoffset,\sakurayoffset);
-			\filldraw[out=180-\sakuraoutangle,in=-180-\sakurainangle,rotate=-(\x - 1) * 72,\sakuraoutercolor] (0,0) to (-\sakuraxoffset,\sakurayoffset);
-			\filldraw[rotate=-(\x - 1) * 72,\sakuraoutercolor] (0,0) -- (-\sakuraxoffset,\sakurayoffset) -- (0,\sakurayoffset-\sakuraxoffset) -- (\sakuraxoffset,\sakurayoffset) -- (0,0);
-			\fill[rotate=-(\x - 1) * 72-6,\sakurainnercolor,opacity=.65] (0,\sakurayoffset *0.25) circle (1.2pt);
-			\fill[rotate=-(\x - 1) * 72+6,\sakurainnercolor,opacity=.65] (0,\sakurayoffset *0.25) circle (1.2pt);
-			\fill[\sakurakernelcolor,opacity=.75] (0,0) circle (2.2pt);
-		}
-	\end{tikzpicture}
-}
-
-\setbeamertemplate{background canvas}
-{
+\def\buildingmodel{%
 	\begin{tikzpicture}[scale=.4]
 		\useasboundingbox (-17.3, 2.5) rectangle (24.3, 17.5);
 		\fill[\buildingcolor] (-1, 0) rectangle (1, 2);
@@ -112,3 +77,73 @@
 		\filldraw[\buildingcolor] (-0.2, 11.7) rectangle (0.2, 11.8);
 	\end{tikzpicture}
 }
+
+\def\sakuraoutangle{53}
+\def\sakurainangle{-25}
+\def\sakuraxoffset{0.25}
+\def\sakurayoffset{3.75}
+\def\sakuraoutercolor{嫣红}
+\def\sakurainnercolor{樱桃色}
+\def\sakurafillcolor{嫣红}
+\def\sakurakernelcolor{樱草色}
+\def\sakuramodel{%
+	\begin{tikzpicture}[scale=.05]
+		\foreach \x in {1,...,5}			
+		{
+			\filldraw[out=\sakuraoutangle,in=\sakurainangle,rotate=-(\x - 1) * 72,\sakuraoutercolor] (0,0) to (\sakuraxoffset,\sakurayoffset);
+			\filldraw[out=180-\sakuraoutangle,in=-180-\sakurainangle,rotate=-(\x - 1) * 72,\sakuraoutercolor] (0,0) to (-\sakuraxoffset,\sakurayoffset);
+			\filldraw[rotate=-(\x - 1) * 72,\sakuraoutercolor] (0,0) -- (-\sakuraxoffset,\sakurayoffset) -- (0,\sakurayoffset-\sakuraxoffset) -- (\sakuraxoffset,\sakurayoffset) -- (0,0);
+			\fill[rotate=-(\x - 1) * 72-6,\sakurainnercolor,opacity=.65] (0,\sakurayoffset *0.25) circle (1.2pt);
+			\fill[rotate=-(\x - 1) * 72+6,\sakurainnercolor,opacity=.65] (0,\sakurayoffset *0.25) circle (1.2pt);
+			\fill[\sakurakernelcolor,opacity=.75] (0,0) circle (2.2pt);
+		}
+	\end{tikzpicture}	
+}
+
+\newcount\curfn % auxiliary counter to get current frame number
+\newcount\totfn % auxiliary counter to get total frame number
+\newdimen\pbheight %progressbar height
+\newdimen\tempdim % auxiliary dimension for calculation
+
+\def\progressbar{%
+	\pbheight=.8\paperheight
+	\curfn=\insertframenumber
+	\totfn=\inserttotalframenumber
+	\tempdim=\pbheight
+	\multiply\tempdim by \curfn
+	\divide\tempdim by \totfn
+	\begin{tikzpicture}[scale=.05]
+		% construct several paths to make room for the sakura
+		\path (-10cm, 0) -- (10cm, 0);
+		\path (0, 0) -- (0, -\pbheight*20);
+		\begin{scope}[yshift=-\the\dimexpr\tempdim\relax*18]
+		\foreach \x in {1,...,5}			
+		{
+			\filldraw[out=\sakuraoutangle,in=\sakurainangle,rotate=-(\x - 1) * 72,\sakuraoutercolor] (0,0) to (\sakuraxoffset,\sakurayoffset);
+			\filldraw[out=180-\sakuraoutangle,in=-180-\sakurainangle,rotate=-(\x - 1) * 72,\sakuraoutercolor] (0,0) to (-\sakuraxoffset,\sakurayoffset);
+			\filldraw[rotate=-(\x - 1) * 72,\sakuraoutercolor] (0,0) -- (-\sakuraxoffset,\sakurayoffset) -- (0,\sakurayoffset-\sakuraxoffset) -- (\sakuraxoffset,\sakurayoffset) -- (0,0);
+			\fill[rotate=-(\x - 1) * 72-6,\sakurainnercolor,opacity=.65] (0,\sakurayoffset *0.25) circle (1.2pt);
+			\fill[rotate=-(\x - 1) * 72+6,\sakurainnercolor,opacity=.65] (0,\sakurayoffset *0.25) circle (1.2pt);
+			\fill[\sakurakernelcolor,opacity=.75] (0,0) circle (2.2pt);
+		}
+		\end{scope}
+		\node[rounded corners, fill=gray, draw=gray, text width=4.5em, align=center, inner sep=2pt, text=white, anchor=east] at (8.1,-\pbheight*20-5) %rounded rectangle west arc=none
+	    {
+	    	\insertframenumber\ /\ \inserttotalframenumber
+	    };
+	\end{tikzpicture}
+}
+
+\setbeamertemplate{headline}[sidebar theme]
+\setbeamersize{sidebar width left=1cm}
+\setbeamertemplate{sidebar left}
+{
+	\includegraphics[width=1cm,height=1cm]{whulogoblack.eps} \\
+	\progressbar
+}
+\setbeamertemplate{qed symbol}{\sakuramodel}
+\setbeamertemplate{background canvas}{\buildingmodel}
+\setbeamertemplate{navigation symbols}{}
+
+\mode
+<all>
