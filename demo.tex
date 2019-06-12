@@ -1,10 +1,10 @@
-%!TeX Options=--shell-escape
 \documentclass{beamer}
 \usepackage{ctex}
 \usepackage{tikz}
 \usepackage{hologo}
 \usepackage{cncolours}
 \usepackage{amsthm,amsmath}
+\usepackage{fancyvrb}
 \usepackage{url}
 
 \usetikzlibrary{calc}
@@ -25,6 +25,15 @@
 \end{frame}
 
 \section{使用方法}
+
+\begin{frame}
+    \frametitle{使用方法}
+    用 $\backslash \mbox{usetheme\{WHUSpot\}}$ 即可载入模板.
+
+    请使用 \hologo{XeLaTeX} 编译.
+
+    目前还没有做section的单独交互.
+\end{frame}
 
 \begin{frame}
     \frametitle{列表与枚举环境}
@@ -59,11 +68,6 @@
         另一方面，由假设条件，$\exists \{f_{n_{k'}}\} \subset \{f_{n_k}\}, s.t. \quad f_{n_{k'}} \to f \quad a.e.$ \\
         因为$m(E) < \infty$，由\textbf{定理$2$}，$f_{n_{k'}} \stackrel{m}{\longrightarrow} f$，从而得出矛盾.从而$f_n \stackrel{m}{\longrightarrow} f$.
     \end{proof}
-\end{frame}
-
-\begin{frame}
-    \frametitle{编译}
-    请使用 \hologo{XeLaTeX} 编译.
 \end{frame}
 
 \section{设计灵感}
