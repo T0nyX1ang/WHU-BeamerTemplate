@@ -1,200 +1,194 @@
+%!TeX Options=--shell-escape
 \documentclass{beamer}
+\usepackage{ctex}
 \usepackage{tikz}
+\usepackage{hologo}
 \usepackage{cncolours}
+\usepackage{amsthm,amsmath}
+\usepackage{url}
+
 \usetikzlibrary{calc}
 \usetheme{WHUSpot}
 \mode<presentation>
 
-\title{WHUSpot Beamer Template}
-\author{Tony Xiang}
-\institute{Wuhan University}
+\title{武汉大学主题 Beamer 模板 - WHUSpot}
+\author{向飞宇}
+\institute{武汉大学}
+\date{\today}
 
 \begin{document}
+
 \begin{frame}
-	\frametitle{\\}
-	\titlepage
+    \frametitle{\\}
+    \titlepage
 \end{frame}
 
-\section{Euclid's Talk}
+\section{使用方法}
+
 \begin{frame}
-    \frametitle{What Are Prime Numbers?}
-    \begin{definition}
-        A \alert{prime number} is a number that has exactly two divisors.
-    \end{definition}
+    \frametitle{列表与枚举环境}
     \begin{itemize}
-        \item 2 is prime (two divisors: 1 and 2).
-        \pause
-        \item 3 is prime (two divisors: 1 and 3).
-        \pause
-        \item 4 is not prime (\alert{three} divisors: 1, 2 and 4) 
+        \item 列表环境是beamer默认的，可以修改. \pause
+        \item 支持多级列表，但修改环境要逐级修改，\alert{不建议}使用. \pause
     \end{itemize}
+
+    \begin{enumerate}
+        \item 枚举环境是beamer默认的，可以修改. \pause
+        \item 支持多级枚举，但修改环境要逐级修改，\alert{不建议}使用.
+    \end{enumerate}
 \end{frame}
 
-\begin{frame} % [t] vertically centered
-    \frametitle{There Is No Largest Prime Number}
-    \framesubtitle{The proof uses \textit{reductio ad absurdum}.}
-    \begin{theorem}
-        There is no largest prime number.
+\begin{frame}
+    \frametitle{定理的一个例子}
+    \begin{theorem}[Risez定理的一个应用]
+    \begin{equation*}
+        f_n \stackrel{m}{\longrightarrow} f \Leftrightarrow \forall \{f_{n_k}\} \subset \{f_n\}, \exists \{f_{n_{k'}}\} \subset \{f_{n_k}\}, s.t. \quad f_{n_{k'}} \to f \quad a.e.     
+    \end{equation*}
     \end{theorem}
+    \renewcommand{\qedsymbol}{}
     \begin{proof}
-        \begin{enumerate}
-            \item<1-> Suppose $p$ were the largest prime number.
-            \item<2-> Let $q$ be the product of the first $p$ numbers.
-            \item<3-> Then $q + 1$ is not divisible by any of them.
-            \item<1-> But $q + 1$ is greater than $1$, thus divisible by some prime number not in the first $p$ numbers. \qedhere
-        \end{enumerate}
-    \end{proof}
-    \uncover<4->{The proof used \textit{reductio ad absurdum}.}
-\end{frame}
-
-\begin{frame}
-    \frametitle{What's Still To Do?}
-    \begin{block}{Answered Questions}
-        How many primes are there?
-    \end{block}
-    \begin{block}{Open Questions}
-        Is every even number the sum of two primes?
-    \end{block}
-\end{frame}
-
-\begin{frame}
-    \frametitle{What’s Still To Do?} % nested itemize
-        \begin{itemize}
-        \item Answered Questions
-            \begin{itemize}
-                \item How many primes are there?
-            \end{itemize}
-        \item Open Questions
-            \begin{itemize}
-                \item Is every even number the sum of two primes?
-            \end{itemize}
-    \end{itemize}
-\end{frame}
-
-\begin{frame}
-    \frametitle{What's Still To Do?} % more sophisticated, columns
-    \begin{columns}
-        \column{.5\textwidth}
-        \begin{block}{Answered Questions}
-            How many primes are there?
-        \end{block}     
-        \column{.5\textwidth}
-        \begin{block}{Open Questions}
-            Is every even number the sum of two primes?
-            \cite{Goldbach1742}
-        \end{block}
-    \end{columns}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{An Algorithm For Finding Primes Numbers.} % more verbatim
-    \begin{semiverbatim}
-        \uncover<1->{\alert<0>{int main (void)}}
-        \uncover<1->{\alert<0>{\{}}
-        \uncover<1->{\alert<1>{ \alert<4>{std::}vector<bool> is_prime (100, true);}}
-        \uncover<1->{\alert<1>{ for (int i = 2; i < 100; i++)}}
-        \uncover<2->{\alert<2>{ if (is_prime[i])}}
-        \uncover<2->{\alert<0>{ \{}}
-        \uncover<3->{\alert<3>{ \alert<4>{std::}cout << i << " ";}}
-        \uncover<3->{\alert<3>{ for (int j = i; j < 100;}}
-        \uncover<3->{\alert<3>{ is_prime [j] = false, j+=i);}}
-        \uncover<2->{\alert<0>{ \}}}
-        \uncover<1->{\alert<0>{ return 0;}}
-        \uncover<1->{\alert<0>{\}}}
-    \end{semiverbatim}
-    \visible<4->{Note the use of \alert{\texttt{std::}}.}
-\end{frame}
-
-\section{Some interesting examples}
-\begin{frame}[<+->]
-    \frametitle{<+-> on a frame}
-    \begin{theorem}
-    $A = B$.
-    \end{theorem}
-    \begin{proof}
-    \begin{itemize}
-    \item Clearly, $A = C$.
-    \item As shown earlier, $C = B$.
-    \item<3-> Thus $A = B$.
-    \end{itemize}
+        （$\Rightarrow$）设$f_n \stackrel{m}{\longrightarrow}f$，则$\forall \{f_{n_k}\} \subset \{f_n\}$，$f_{n_k} \stackrel{m}{\longrightarrow} f$（直接按照定义证明），由\textbf{定理$3$}（Risez定理），$\exists \{f_{n_{k'}}\} \subset \{f_{n_k}\}, s.t. \quad f_{n_{k'}} \to f \quad a.e. (k' \to \infty).$ \\
+        （$\Leftarrow$）用反证法，若$\{f_n\} \stackrel{m}{\nrightarrow} f$，$\exists \varepsilon > 0, s.t. \quad m(E(|f_n - f| \geqslant \varepsilon)) \nrightarrow 0$，于是$\exists \delta > 0, \{f_{n_k}\} \subset \{f_n\}, s.t.$ \[m(E(|f_{n_k} - f| \geqslant \varepsilon)) \geqslant \delta, \quad k = 1, 2, \cdots.\] 
     \end{proof}
 \end{frame}
 
 \begin{frame}
-\frametitle{Overlays}
-\begin{itemize}
-\item
-Shown from first slide on.
-\pause
-\item
-Shown from second slide on.
-\begin{itemize}
-\item
-Shown from second slide on.
-\pause
-\item
-Shown from third slide on.
-\end{itemize}
-\item
-Shown from third slide on.
-\pause
-\item
-Shown from fourth slide on.
-\end{itemize}
-Shown from fourth slide on.
-\begin{itemize}
-\onslide
-\item
-Shown from first slide on.
-\pause
-\item
-Shown from fifth slide on.
-\end{itemize}
+    \frametitle{定理的一个例子(续)}
+    \begin{proof}[证明（续）]
+        另一方面，由假设条件，$\exists \{f_{n_{k'}}\} \subset \{f_{n_k}\}, s.t. \quad f_{n_{k'}} \to f \quad a.e.$ \\
+        因为$m(E) < \infty$，由\textbf{定理$2$}，$f_{n_{k'}} \stackrel{m}{\longrightarrow} f$，从而得出矛盾.从而$f_n \stackrel{m}{\longrightarrow} f$.
+    \end{proof}
 \end{frame}
-
-\part{Review of Previous Lecture}
-\frame{\partpage}
 
 \begin{frame}
-    \begin{itemize}
-        \item<1-> First item.
-        \item<2-> Second item.
-        \item<3-> Third item. 
-    \end{itemize}
-    \hyperlink{jumptosecond}{\beamergotobutton{Jump to second slide}}
-    \hypertarget<2>{jumptosecond}{}
+    \frametitle{编译}
+    请使用 \hologo{XeLaTeX} 编译.
 \end{frame}
 
-\frame<1-2>[label=myframe]
-{
-\frametitle{repeating a frame}
-\begin{itemize}
-    \item<alert@1> First subject.
-    \item<alert@2> Second subject.
-    \item<alert@3> Third subject.
-\end{itemize}
-}
-\frame
-{
-    Some stuff explaining more on the second matter.
-}
-\againframe<3>{myframe}
+\section{设计灵感}
+\begin{frame}
+    \frametitle{配色}
+    红，蓝，黑为主，绿，很浅的白为辅.
+
+    用cncolours包配色.
+\end{frame}
 
 \begin{frame}
+    \frametitle{一瓣瓣的樱花}
+    \begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=.8]
+        \foreach \x in {1,...,5}            
+        {
+            \pause
+            \filldraw[out=\sakuraoutangle,in=\sakurainangle,rotate=-(\x - 1) * 72,\sakuraoutercolor] (0,0) to (\sakuraxoffset,\sakurayoffset);
+            \filldraw[out=180-\sakuraoutangle,in=-180-\sakurainangle,rotate=-(\x - 1) * 72,\sakuraoutercolor] (0,0) to (-\sakuraxoffset,\sakurayoffset);
+            \filldraw[rotate=-(\x - 1) * 72,\sakuraoutercolor] (0,0) -- (-\sakuraxoffset,\sakurayoffset) -- (0,\sakurayoffset-\sakuraxoffset) -- (\sakuraxoffset,\sakurayoffset) -- (0,0);
+            \fill[rotate=-(\x - 1) * 72-6,\sakurainnercolor,opacity=.65] (0,\sakurayoffset *0.25) circle (1.2pt);
+            \fill[rotate=-(\x - 1) * 72+6,\sakurainnercolor,opacity=.65] (0,\sakurayoffset *0.25) circle (1.2pt);
+            \fill[\sakurakernelcolor,opacity=.75] (0,0) circle (2.2pt);
+        }
+    \end{tikzpicture}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{老图书馆不是一日建成的}
+    \begin{figure}
+    \centering
+    \renewcommand{\buildingcolor}{blue}
+    \begin{tikzpicture}[scale=.4]
+        \useasboundingbox (-0.3, 0.5) rectangle (0, 10);
+        \fill[\buildingcolor] (-1, 0) rectangle (1, 2);
+        \draw[\buildingcolor] (-1.2, 0) rectangle (1.2, 2.2);
+        \draw[line width=2.5pt,\buildingcolor] (-6, 0) -- (6, 0);
+        \foreach \x in {1,...,5}
+        {
+            \draw[line width=1.5pt, \buildingcolor] (-4.5 - \x * 0.2, -\x / 3) -- (4.5 + \x * 0.2, -\x / 3);
+        }
+        \fill[\buildingcolor] (-12, -2) -- (12, -2) -- (11.5, -2.2) -- (-11.5, -2.2) -- cycle;
+        \fill[\buildingcolor] (-11.3, -2.28) -- (11.3, -2.28) -- (10.8, -2.48) -- (-10.8, -2.48) -- cycle;
+        \fill[\buildingcolor] (-6, -2.56) -- (6, -2.56) -- (5.5, -2.76) -- (-5.5, -2.76) -- cycle;
+        \pause
+
+        \foreach \i in {-1, 1} 
+            \filldraw[\buildingcolor] (-5.8 * \i, 0) -- (-5.8 * \i, -0.3) -- (-5.5 * \i, -0.3) -- (-6.4 * \i, -1.8) -- (-11.4 * \i, -1.8) -- (-10.68 * \i, -0.6) -- (-10.5 * \i, -0.6) -- (-10.5 * \i, 3.5) -- (-6 * \i, 3.5) -- (-6 * \i, 0) -- cycle;
+        \foreach \j in {8.97, 7.72, 6.47}
+            \filldraw[rounded corners, white] (\j, 2.4) rectangle (\j+ 1, 3);
+        \foreach \j in {-8.97, -7.72, -6.47}
+            \filldraw[rounded corners, white] (\j, 2.4) rectangle (\j- 1, 3);
+        \pause
+
+        \filldraw[\buildingcolor] (-10.5, 3.9) rectangle (10.5, 4.6);
+        \filldraw[\buildingcolor] (-10.5, 3.5) rectangle (10.5, 3.7);
+        \foreach \k in {-5.6, -3.1, 3.5}
+            \filldraw[\buildingcolor] (\k, 0) -- (\k, 3.9) -- (\k + 0.5, 3.9) -- (\k + 0.5, 3.5) -- (\k + 0.2, 3.3) -- (\k + 0.2, 0) -- cycle;
+        \foreach \k in {5.6, 3.1, -3.5}
+            \filldraw[\buildingcolor] (\k, 0) -- (\k, 3.9) -- (\k - 0.5, 3.9) -- (\k - 0.5, 3.5) -- (\k - 0.2, 3.3) -- (\k - 0.2, 0) -- cycle;
+        \filldraw[\buildingcolor] (-0.25, 3.7) rectangle (0.25, 4);
+        \pause
+
+        \filldraw[\buildingcolor] (-10.5, 4.8) [out=165,in=-78]to (-12.8, 7) [out=-75,in=-180]to (-10.8, 6) [out=0,in=-95]to (-8.9, 8) [out=-85,in=-180]to (-6.8, 5.9) [out=0,in=-120]to (-5, 6.8) [out=-95,in=15]to (-6, 5.0) -- (-6, 4.8) -- cycle; 
+        \filldraw[\buildingcolor] (10.5, 4.8) [out=15,in=-102]to (12.8, 7) [out=-105,in=0]to (10.8, 6) [out=180,in=-85]to (8.9, 8) [out=-95,in=0]to (6.8, 5.9) [out=180,in=-60]to (5, 6.8) [out=-85,in=165]to (6, 5.0) -- (6, 4.8) -- cycle;
+        \filldraw[\buildingcolor] (-6, 4.8) rectangle (6, 5.0);
+        \foreach \i in {-1, 1}
+        {
+            \filldraw[\buildingcolor] (-8.4 * \i, 6.9) -- (-5.1 * \i, 6.9) -- (-5.3 * \i, 6.6) -- (-8.1 * \i, 6.6) -- cycle;
+            \filldraw[\buildingcolor] (-7.99 * \i, 6.45) -- (-5.4 * \i, 6.45) -- (-5.52 * \i, 6.35) -- (-7.87 * \i, 6.35) -- cycle;     
+        }
+        \filldraw[\buildingcolor] (-4.88, 6.9) -- (4.88, 6.9) -- (4.9, 6.6) -- (-4.9, 6.6) -- cycle;
+        \filldraw[\buildingcolor] (-4.93, 6.45) -- (4.93, 6.45) -- (4.95, 6.35) -- (-4.95, 6.35) -- cycle;
+        \pause
+
+        \foreach \i in {-1, 1}
+        {
+            \filldraw[\buildingcolor] (-5.5 * \i, 5.1) -- (-5.5 * \i, 5.2) -- (-5.3 * \i, 5.3) -- (-5.3 * \i, 5.1) -- cycle;
+            \filldraw[\buildingcolor] (-5.2 * \i, 5.1) -- (-5.2 * \i, 5.35) -- (-5.05 * \i, 5.85) -- (-5.05 * \i, 5.1) -- cycle;
+        }
+        \foreach \i in {0,...,24}
+            \filldraw[\buildingcolor] (-4.9 + \i * 0.4, 5.1) rectangle (-4.9 + \i * 0.4 + 0.2, 6.25);
+        \pause
+
+        \filldraw[\buildingcolor] (-5, 7.7) [out=180,in=-90]to (-6.2, 8.5) [out=-30,in=-150]to (-4.4, 8.5) -- (-4.5, 9.6) to (-3.5, 8.8) -- (-2.7, 9.1) -- (-2.7, 10.2) -- (2.7, 10.2) -- (2.7, 9.1) -- (3.5, 8.8) to (4.5, 9.6) -- (4.4, 8.5) [out=-30,in=-150]to (6.2, 8.5) [out=-90,in=0]to (5, 7.7) -- (3.1, 8.2) -- (-3.1, 8.2) -- cycle;
+        \filldraw[rounded corners=1pt,\buildingcolor] (-2.9, 10.0) rectangle (-2.5, 10.4);
+        \filldraw[rounded corners=1pt,\buildingcolor] (2.9, 10.0) rectangle (2.5, 10.4);
+        \foreach \i in {-1, 1}
+            \filldraw[rounded corners=3pt,rotate around={13 * \i:(-4.7 * \i,7.1)},\buildingcolor] (-4.7 * \i, 7.1) rectangle (-3.1 * \i, 7.5); 
+        \foreach \i in {0,...,3}
+            \filldraw[rounded corners=3pt, \buildingcolor] (-2.95 + \i * 1.5, 7.5) rectangle (-1.55 + \i * 1.5, 7.9);
+        \pause
+
+        \filldraw[\buildingcolor] (-0.3, 10.2) rectangle (0.3, 10.3);
+        \filldraw[\buildingcolor] (-0.3, 10.4) [bend left=10]to (-0.3, 11.2) -- (-0.2, 11.3) -- (-0.3, 11.4) -- (-0.3, 11.6) -- (0.3, 11.6) -- (0.3, 11.4) -- (0.2, 11.3) -- (0.3, 11.2) [bend left=10]to (0.3, 10.4) -- cycle;
+        \filldraw[\buildingcolor] (-0.2, 11.7) rectangle (0.2, 11.8);
+    \end{tikzpicture}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{杂项}
     \begin{itemize}
-    \item<1-> Eggs
-    \item<2-> Plants
-    \note[item]<2>{Tell joke about plants.}
-    \note[item]<2>{Make it short.}
-    \item<3-> Animals
+        \item 本来想用樱花实现一个更复杂的progress bar的，最后放弃了.
+        \item 因为背景用的老图书馆的背景，使用一个带颜色的block显得多余，所以很多地方直接使用了 beamer 的默认配置.
     \end{itemize}
 \end{frame}
 
-\begin{thebibliography}{10}
-    \bibitem{Goldbach1742}[Goldbach, 1742]
-    Christian Goldbach.
-    \newblock A problem we should try to solve before the ISPN ’43 deadline,
-    \newblock \emph{Letter to Leonhard Euler}, 1742.
-\end{thebibliography}
+\begin{frame}
+    \frametitle{鸣谢}
+    \begin{itemize}
+        \item 用cncolours当调色板，\\ \url{https://github.com/liantze/pgfornament-han}
+        \item progress bar的思路，\\ \url{https://github.com/DjalelBBZ/Algiers-beamer-template} 
+    \end{itemize}
+\end{frame}
+
+\section{联系，bug反馈，授权}
+\begin{frame}
+    \frametitle{联系，bug反馈，授权}
+    \begin{itemize}
+        \item 最新版本在 \\ \url{https://github.com/T0nyX1ang/WHU-BeamerTemplate} 上发布.
+        \item bug反馈可以直接在Github上发issue.
+        \item 使用LPPL-1.3c（及以后版本）授权.
+    \end{itemize}
+\end{frame}
 
 \end{document}
