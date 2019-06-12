@@ -9,16 +9,28 @@
 \usetikzlibrary{calc}
 \RequirePackage{cncolours}
 
+\usefonttheme[onlymath]{serif}
+
 \setbeamercolor{normal text}{fg=black}
 \setbeamercolor{alerted text}{fg=酡红}
-\setbeamercolor{example text}{fg=靛蓝}
+\setbeamercolor{example text}{fg=宝蓝}
 \setbeamercolor{titlelike}{fg=black}
-\setbeamercolor{frametitle}{fg=black,bg=嫣红}
+\setbeamercolor*{frametitle}{fg=white,bg=海棠红}
 \setbeamercolor{qed symbol}{fg=松花色}
+\setbeamercolor{button}{fg=white,bg=松花色}
+\setbeamercolor{block title}{fg=宝蓝}
+\setbeamercolor{block title alerted}{fg=酡红}
+\setbeamercolor{block title example}{fg=宝蓝}
+\setbeamercolor{itemize item}{fg=宝蓝}
+\setbeamercolor{itemize subitem}{fg=宝蓝}
+\setbeamercolor{itemize subsubitem}{fg=宝蓝}
+\setbeamercolor{enumerate item}{fg=宝蓝}
+\setbeamercolor{enumerate subitem}{fg=宝蓝}
+\setbeamercolor{enumerate subsubitem}{fg=宝蓝}
 
 \def\buildingcolor{霜色}
 \def\buildingmodel{%
-	\begin{tikzpicture}[scale=.4]
+	\begin{tikzpicture}[scale=.4,opacity=.85]
 		\useasboundingbox (-17.3, 2.5) rectangle (24.3, 17.5);
 		\fill[\buildingcolor] (-1, 0) rectangle (1, 2);
 		\draw[\buildingcolor] (-1.2, 0) rectangle (1.2, 2.2);
@@ -122,7 +134,7 @@
 	\end{tikzpicture}
 }
 
-\setbeamertemplate{headline}[sidebar theme]
+\setbeamertemplate{frametitle}[shadow theme]
 \setbeamersize{sidebar width left=1cm}
 \setbeamertemplate{sidebar left}
 {
