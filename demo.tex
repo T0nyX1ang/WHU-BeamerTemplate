@@ -27,12 +27,13 @@
 \section{使用方法}
 
 \begin{frame}
-    \frametitle{使用方法}
-    用 $\backslash \mbox{usetheme\{WHUSpot\}}$ 即可载入模板.
-
-    请使用 \hologo{XeLaTeX} 编译.
-
-    目前还没有做section的单独交互.
+    \frametitle{使用方法与注意事项}
+    \begin{itemize}
+        \item 用 $\backslash \mbox{usetheme\{WHUSpot\}}$ 即可载入模板，当然也需要将 beamerthemeWHUSpot.sty 放在合适的地方（其实在同目录下就行）.
+        \item 请使用 \hologo{XeLaTeX} 编译，一般而言使用\alert{TeX Live 2018}及以上版本能够保证正常编译（当然稍微低版本的TeX Live应该也没问题）.
+        \item 本人\alert{没有设计subsection及以下层次}的页面，仅在有section时调用一个特别的页面，请谨慎组织标题内容.
+        \item 请不要轻易改变配色方案.
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -103,7 +104,7 @@
     \centering
     \renewcommand{\buildingcolor}{blue}
     \begin{tikzpicture}[scale=.4]
-        \useasboundingbox (-0.3, 0.5) rectangle (0, 10);
+        \useasboundingbox (-0.2, 0.5) rectangle (0.05, 10);
         \fill[\buildingcolor] (-1, 0) rectangle (1, 2);
         \draw[\buildingcolor] (-1.2, 0) rectangle (1.2, 2.2);
         \draw[line width=2.5pt,\buildingcolor] (-6, 0) -- (6, 0);
