@@ -15,7 +15,7 @@
 \setbeamercolor{alerted text}{fg=酡红}
 \setbeamercolor{example text}{fg=宝蓝}
 \setbeamercolor{titlelike}{fg=black}
-\setbeamercolor*{frametitle}{fg=white,bg=海棠红}
+\setbeamercolor{frametitle}{fg=white,bg=海棠红}
 \setbeamercolor{qed symbol}{fg=松花色}
 \setbeamercolor{button}{fg=white,bg=松花色}
 \setbeamercolor{block title}{fg=宝蓝}
@@ -99,6 +99,17 @@
 \def\sakurainnercolor{樱桃色}
 \def\sakurafillcolor{嫣红}
 \def\sakurakernelcolor{樱草色}
+\def\sakuramodel{
+	\foreach \x in {1,...,5}			
+	{
+		\filldraw[out=\sakuraoutangle,in=\sakurainangle,rotate=-(\x - 1) * 72,\sakuraoutercolor] (0,0) to (\sakuraxoffset,\sakurayoffset);
+		\filldraw[out=180-\sakuraoutangle,in=-180-\sakurainangle,rotate=-(\x - 1) * 72,\sakuraoutercolor] (0,0) to (-\sakuraxoffset,\sakurayoffset);
+		\filldraw[rotate=-(\x - 1) * 72,\sakuraoutercolor] (0,0) -- (-\sakuraxoffset,\sakurayoffset) -- (0,\sakurayoffset-\sakuraxoffset) -- (\sakuraxoffset,\sakurayoffset) -- (0,0);
+		\fill[rotate=-(\x - 1) * 72-6,\sakurainnercolor,opacity=.65] (0,\sakurayoffset *0.25) circle (1.2pt);
+		\fill[rotate=-(\x - 1) * 72+6,\sakurainnercolor,opacity=.65] (0,\sakurayoffset *0.25) circle (1.2pt);
+		\fill[\sakurakernelcolor,opacity=.75] (0,0) circle (2.2pt);
+	}
+}
 
 \newcount\curfn % auxiliary counter to get current frame number
 \newcount\totfn % auxiliary counter to get total frame number
@@ -117,21 +128,23 @@
 		\path (-10cm, 0) -- (10cm, 0);
 		\draw[pink!80!white, line width=0.4pt] (0, 0) -- (0, -\pbheight*20);
 		\begin{scope}[yshift=-\the\dimexpr\tempdim\relax*18]
-		\foreach \x in {1,...,5}			
-		{
-			\filldraw[out=\sakuraoutangle,in=\sakurainangle,rotate=-(\x - 1) * 72,\sakuraoutercolor] (0,0) to (\sakuraxoffset,\sakurayoffset);
-			\filldraw[out=180-\sakuraoutangle,in=-180-\sakurainangle,rotate=-(\x - 1) * 72,\sakuraoutercolor] (0,0) to (-\sakuraxoffset,\sakurayoffset);
-			\filldraw[rotate=-(\x - 1) * 72,\sakuraoutercolor] (0,0) -- (-\sakuraxoffset,\sakurayoffset) -- (0,\sakurayoffset-\sakuraxoffset) -- (\sakuraxoffset,\sakurayoffset) -- (0,0);
-			\fill[rotate=-(\x - 1) * 72-6,\sakurainnercolor,opacity=.65] (0,\sakurayoffset *0.25) circle (1.2pt);
-			\fill[rotate=-(\x - 1) * 72+6,\sakurainnercolor,opacity=.65] (0,\sakurayoffset *0.25) circle (1.2pt);
-			\fill[\sakurakernelcolor,opacity=.75] (0,0) circle (2.2pt);
-		}
+			\sakuramodel
 		\end{scope}
 		\node[rounded corners, fill=gray, draw=gray, text width=4.5em, align=center, inner sep=2pt, text=white, anchor=east] at (8.1,-\pbheight*20-5) %rounded rectangle west arc=none
 	    {
 	    	\insertframenumber\ /\ \inserttotalframenumber
 	    };
 	\end{tikzpicture}
+}
+
+\AtBeginSection[] % Do nothing for \section*
+{
+	\sectionpage
+}
+
+\AtBeginSection[*] % Do nothing for \section*
+{
+	\sectionpage
 }
 
 \setbeamertemplate{frametitle}[shadow theme]
@@ -143,6 +156,37 @@
 }
 \setbeamertemplate{background canvas}{\buildingmodel}
 \setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{section page}
+{
+	\begingroup 
+		\setbeamertemplate{background canvas}
+		{
+			\begin{tikzpicture}
+				\fill[color=海棠红] (0, 0) rectangle (\paperwidth, \paperheight);
+			\end{tikzpicture}
+		}
+		\begin{frame}[c, plain]
+			\vskip 1.2em
+			\textcolor{white}{\insertsection}
+			\vskip 0.3em
+			\hskip 0.1em
+			\begin{tikzpicture}
+				\draw[line width=0.1pt, color=霜色] (0, 0) -- (.75\paperwidth, 0);
+				\curfn=\insertframenumber
+				\totfn=\inserttotalframenumber
+				\tempdim=.75\paperwidth
+				\multiply\tempdim by \curfn
+				\divide\tempdim by \totfn
+				\begin{scope}[scale=.05,xshift=\the\dimexpr\tempdim\relax*18]
+					\renewcommand{\sakuraoutercolor}{pink!10!white}
+					\renewcommand{\sakurainnercolor}{white}
+					\renewcommand{\sakurafillcolor}{white}
+					\sakuramodel
+				\end{scope}
+			\end{tikzpicture}
+		\end{frame}
+	\endgroup
+}
 
 \mode
 <all>
