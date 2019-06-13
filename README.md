@@ -1,4 +1,5 @@
 # WHU-BeamerTemplate
+[Screenshot](https://github.com/T0nyX1ang/WHU-BeamerTemplate/blob/master/preview/final.png)
 This is a beamer template based on Wuhan University's spots.
 
 To use the theme, please use `\usetheme{WHUSpot}` in the preamble.
