@@ -172,14 +172,6 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{杂项}
-    \begin{itemize}
-        \item 本来想用樱花实现一个更复杂的progress bar的，最后放弃了.
-        \item 因为背景用的老图书馆的背景，使用一个带颜色的block显得多余，所以很多地方直接使用了 beamer 的默认配置.
-    \end{itemize}
-\end{frame}
-
-\begin{frame}
     \frametitle{鸣谢}
     \begin{itemize}
         \item 武汉大学.
@@ -197,5 +189,33 @@
         \item 使用LPPL-1.3c（及以后版本）授权.
     \end{itemize}
 \end{frame}
+
+\begin{frame}
+    \frametitle{杂项}
+    \begin{itemize}
+        \item 本来想用樱花实现一个更复杂的progress bar的，最后放弃了.
+        \item 因为背景用的老图书馆的背景，使用一个带颜色的block显得多余，所以很多地方直接使用了 beamer 的默认配置.
+        \item titlepage页\alert{默认没有}frametitle，所以如果需要顶部的背景色，需要使用$\backslash$frametitle\{$\backslash \backslash$\}.
+        \item 樱花和老图书馆被封装为独立的模板，可以将其放在tikzpicture中进行修改.
+        \item 有一些模板是可以重新设定的，可以见最后一页. \hyperlink{final}{\beamerbutton{Final}}
+    \end{itemize}
+\end{frame}
+
+\begingroup
+\setbeamertemplate{background canvas}{}
+\begin{frame}[label=final]
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=.4]
+        \renewcommand{\buildingcolor}{蟹壳青}
+        \buildingmodel
+        \begin{scope}[xshift=0cm,yshift=12.5cm,scale=.2]
+            \sakuramodel
+        \end{scope}
+    \end{tikzpicture}
+\end{figure}
+
+\end{frame}
+\endgroup
 
 \end{document}
