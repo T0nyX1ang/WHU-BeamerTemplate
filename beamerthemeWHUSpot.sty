@@ -99,9 +99,7 @@
 \def\sakuramodel{
 	\foreach \x in {1,...,5}			
 	{
-		\filldraw[out=\sakuraoutangle,in=\sakurainangle,rotate=-(\x - 1) * 72,\sakuraoutercolor] (0,0) to (\sakuraxoffset,\sakurayoffset);
-		\filldraw[out=180-\sakuraoutangle,in=-180-\sakurainangle,rotate=-(\x - 1) * 72,\sakuraoutercolor] (0,0) to (-\sakuraxoffset,\sakurayoffset);
-		\filldraw[rotate=-(\x - 1) * 72,\sakuraoutercolor] (0,0) -- (-\sakuraxoffset,\sakurayoffset) -- (0,\sakurayoffset-\sakuraxoffset) -- (\sakuraxoffset,\sakurayoffset) -- (0,0);
+		\filldraw[rotate=-(\x - 1) * 72,color=\sakuraoutercolor] (0,0) [out=\sakuraoutangle,in=\sakurainangle]to (\sakuraxoffset,\sakurayoffset) -- (0,\sakurayoffset-\sakuraxoffset) -- (-\sakuraxoffset,\sakurayoffset) [out=-180-\sakurainangle,in=180-\sakuraoutangle]to (0, 0) -- cycle;
 		\fill[rotate=-(\x - 1) * 72-6,\sakurainnercolor,opacity=.65] (0,\sakurayoffset *0.25) circle (1.2pt);
 		\fill[rotate=-(\x - 1) * 72+6,\sakurainnercolor,opacity=.65] (0,\sakurayoffset *0.25) circle (1.2pt);
 		\fill[\sakurakernelcolor,opacity=.75] (0,0) circle (2.2pt);
@@ -151,7 +149,12 @@
 	\includegraphics[width=1cm,height=1cm]{whulogoblack.eps} \\
 	\progressbar
 }
-\setbeamertemplate{background canvas}{\buildingmodel}
+\setbeamertemplate{background canvas}{%
+	\begin{tikzpicture}[scale=.4,opacity=.85]
+	    \useasboundingbox (-17.3, 2.5) rectangle (24.3, 17.5);
+	    \buildingmodel
+	\end{tikzpicture}
+}
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{section page}
 {
