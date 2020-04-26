@@ -31,7 +31,8 @@ jobs:
         extra_system_packages: "py-pygments"
         
     # Upload demo to artifacts if the demo is compiled successfully
-    - name: actions/upload-artifact@v1
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v1
       if: success()
       with:
         name: demo-document
