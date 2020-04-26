@@ -33,7 +33,7 @@ jobs:
     # Upload demo to artifacts if the demo is compiled successfully
     - name: Upload artifacts
       uses: actions/upload-artifact@v1
-      if: success()
+      if: always()
       with:
         name: demo-document
         path: demo.pdf
