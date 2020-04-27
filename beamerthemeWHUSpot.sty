@@ -8,6 +8,7 @@
 \RequirePackage{tikz}
 \usetikzlibrary{calc}
 \RequirePackage{cncolours}
+\RequirePackage{pgfmath}
 
 \usefonttheme[onlymath]{serif}
 
@@ -106,26 +107,17 @@
 	}
 }
 
-\newcount\curfn % auxiliary counter to get current frame number
-\newcount\totfn % auxiliary counter to get total frame number
-\newdimen\pbheight %progressbar height
-\newdimen\tempdim % auxiliary dimension for calculation
-
-\def\progressbar{%
-	\pbheight=.8\paperheight
-	\curfn=\insertframenumber
-	\totfn=\inserttotalframenumber
-	\tempdim=\pbheight
-	\multiply\tempdim by \curfn
-	\divide\tempdim by \totfn
-	\begin{tikzpicture}[scale=.05]
+\def\progressbar{
+	% draw a vertical progress bar here
+	\begin{tikzpicture}
 		% construct several paths to make room for the sakura
-		\path (-10cm, 0) -- (10cm, 0);
-		\draw[pink!80!white, line width=0.4pt] (0, 0) -- (0, -\pbheight*20);
-		\begin{scope}[yshift=-\the\dimexpr\tempdim\relax*18]
+		\path (-0.5cm, 0) -- (0.5cm, 0);
+		\draw[pink!80!white, line width=0.4pt] (0, 0) -- (0, -0.8\paperheight);
+		\pgfmathparse{-0.8 / \inserttotalframenumber * \paperheight * (\insertframenumber - 0.5)} % calculate the required shift
+		\begin{scope}[yshift=\pgfmathresult, scale=.05]
 			\sakuramodel
 		\end{scope}
-		\node[rounded corners, fill=gray, draw=gray, text width=4.5em, align=center, inner sep=2pt, text=white, anchor=east] at (8.1,-\pbheight*20-5) %rounded rectangle west arc=none
+		\node[rounded corners, fill=gray, draw=gray, text width=4.5em, align=center, inner sep=2pt, text=white, anchor=east] at (0.405, -0.8\paperheight-5) %rounded rectangle west arc=none
 	    {
 	    	\insertframenumber\ /\ \inserttotalframenumber
 	    };
@@ -170,14 +162,11 @@
 			\textcolor{white}{\insertsection}
 			\vskip 0.3em
 			\hskip 0.1em
+			% draw a horizontal progress bar here
 			\begin{tikzpicture}
-				\draw[line width=0.1pt, color=霜色] (0, 0) -- (.75\paperwidth, 0);
-				\curfn=\insertframenumber
-				\totfn=\inserttotalframenumber
-				\tempdim=.75\paperwidth
-				\multiply\tempdim by \curfn
-				\divide\tempdim by \totfn
-				\begin{scope}[scale=.05,xshift=\the\dimexpr\tempdim\relax*18]
+				\draw[line width=0.1pt, color=霜色] (0, 0) -- (.8\paperheight, 0);
+				\pgfmathparse{0.8 / \inserttotalframenumber * \paperheight * (\insertframenumber - 0.5)} % calculate the required shift
+				\begin{scope}[xshift=\pgfmathresult, scale=.05]
 					\renewcommand{\sakuraoutercolor}{pink!10!white}
 					\renewcommand{\sakurainnercolor}{white}
 					\renewcommand{\sakurafillcolor}{white}
