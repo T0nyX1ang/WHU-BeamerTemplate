@@ -122,9 +122,6 @@
 		% construct several paths to make room for the sakura
 		\path (-10cm, 0) -- (10cm, 0);
 		\draw[pink!80!white, line width=0.4pt] (0, 0) -- (0, -\pbheight*20);
-		\begin{scope}[yshift=-\the\dimexpr\tempdim\relax*18]
-			\sakuramodel
-		\end{scope}
 		\node[rounded corners, fill=gray, draw=gray, text width=4.5em, align=center, inner sep=2pt, text=white, anchor=east] at (8.1,-\pbheight*20-5) %rounded rectangle west arc=none
 	    {
 	    	\insertframenumber\ /\ \inserttotalframenumber
