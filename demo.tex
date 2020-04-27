@@ -49,28 +49,6 @@
     \end{enumerate}
 \end{frame}
 
-\begin{frame}
-    \frametitle{定理的一个例子}
-    \begin{theorem}[Risez定理的一个应用]
-    \begin{equation*}
-        f_n \stackrel{m}{\longrightarrow} f \Leftrightarrow \forall \{f_{n_k}\} \subset \{f_n\}, \exists \{f_{n_{k'}}\} \subset \{f_{n_k}\}, s.t. \quad f_{n_{k'}} \to f \quad a.e.     
-    \end{equation*}
-    \end{theorem}
-    \renewcommand{\qedsymbol}{}
-    \begin{proof}
-        （$\Rightarrow$）设$f_n \stackrel{m}{\longrightarrow}f$，则$\forall \{f_{n_k}\} \subset \{f_n\}$，$f_{n_k} \stackrel{m}{\longrightarrow} f$（直接按照定义证明），由\textbf{定理$3$}（Risez定理），$\exists \{f_{n_{k'}}\} \subset \{f_{n_k}\}, s.t. \quad f_{n_{k'}} \to f \quad a.e. (k' \to \infty).$ \\
-        （$\Leftarrow$）用反证法，若$\{f_n\} \stackrel{m}{\nrightarrow} f$，$\exists \varepsilon > 0, s.t. \quad m(E(|f_n - f| \geqslant \varepsilon)) \nrightarrow 0$，于是$\exists \delta > 0, \{f_{n_k}\} \subset \{f_n\}, s.t.$ \[m(E(|f_{n_k} - f| \geqslant \varepsilon)) \geqslant \delta, \quad k = 1, 2, \cdots.\] 
-    \end{proof}
-\end{frame}
-
-\begin{frame}
-    \frametitle{定理的一个例子(续)}
-    \begin{proof}[证明（续）]
-        另一方面，由假设条件，$\exists \{f_{n_{k'}}\} \subset \{f_{n_k}\}, s.t. \quad f_{n_{k'}} \to f \quad a.e.$ \\
-        因为$m(E) < \infty$，由\textbf{定理$2$}，$f_{n_{k'}} \stackrel{m}{\longrightarrow} f$，从而得出矛盾.从而$f_n \stackrel{m}{\longrightarrow} f$.
-    \end{proof}
-\end{frame}
-
 \section{设计灵感}
 \begin{frame}
     \frametitle{配色}
