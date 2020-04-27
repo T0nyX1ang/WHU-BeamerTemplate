@@ -24,8 +24,6 @@
     \titlepage
 \end{frame}
 
-\section{使用方法}
-
 \begin{frame}
     \frametitle{使用方法与注意事项}
     \begin{itemize}
@@ -47,6 +45,32 @@
         \item 枚举环境是beamer默认的，可以修改. \pause
         \item 支持多级枚举，但修改环境要逐级修改，\alert{不建议}使用.
     \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{配色}
+    红，蓝，黑为主，绿，很浅的白为辅.
+
+    用cncolours包配色.
+\end{frame}
+
+\begin{frame}
+    \frametitle{一瓣瓣的樱花}
+    \begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=.8]
+        \foreach \x in {1,...,5}            
+        {
+            \pause
+            \filldraw[out=\sakuraoutangle,in=\sakurainangle,rotate=-(\x - 1) * 72,\sakuraoutercolor] (0,0) to (\sakuraxoffset,\sakurayoffset);
+            \filldraw[out=180-\sakuraoutangle,in=-180-\sakurainangle,rotate=-(\x - 1) * 72,\sakuraoutercolor] (0,0) to (-\sakuraxoffset,\sakurayoffset);
+            \filldraw[rotate=-(\x - 1) * 72,\sakuraoutercolor] (0,0) -- (-\sakuraxoffset,\sakurayoffset) -- (0,\sakurayoffset-\sakuraxoffset) -- (\sakuraxoffset,\sakurayoffset) -- (0,0);
+            \fill[rotate=-(\x - 1) * 72-6,\sakurainnercolor,opacity=.65] (0,\sakurayoffset *0.25) circle (1.2pt);
+            \fill[rotate=-(\x - 1) * 72+6,\sakurainnercolor,opacity=.65] (0,\sakurayoffset *0.25) circle (1.2pt);
+            \fill[\sakurakernelcolor,opacity=.75] (0,0) circle (2.2pt);
+        }
+    \end{tikzpicture}
+    \end{figure}
 \end{frame}
 
 \begin{frame}
@@ -77,5 +101,22 @@
         \item 有一些模板是可以重新设定的，可以见最后一页. \hyperlink{final}{\beamerbutton{Final}}
     \end{itemize}
 \end{frame}
+
+\begingroup
+\setbeamertemplate{background canvas}{}
+\begin{frame}[label=final]
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=.4]
+        \renewcommand{\buildingcolor}{蟹壳青}
+        \buildingmodel
+        \begin{scope}[xshift=0cm,yshift=12.5cm,scale=.2]
+            \sakuramodel
+        \end{scope}
+    \end{tikzpicture}
+\end{figure}
+
+\end{frame}
+\endgroup
 
 \end{document}
