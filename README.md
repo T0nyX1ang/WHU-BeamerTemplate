@@ -1,4 +1,7 @@
-# WHU-BeamerTemplate (武汉大学主题Beamer模板 - WHUSpot)
+# WHU-BeamerTemplate (武汉大学主题Beamer模板)
+
+![LaTeX Validation](https://github.com/T0nyX1ang/WHU-BeamerTemplate/workflows/LaTeX%20Validation/badge.svg)
+![Releases](https://img.shields.io/github/v/release/T0nyX1ang/WHU-BeamerTemplate)
 
 ## Introduction
 

@@ -15,7 +15,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: [ windows-latest, ubuntu-latest, osx-latest ]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -33,7 +33,7 @@ jobs:
     # Upload demo to artifacts if the demo is compiled successfully
     - name: Upload artifacts
       uses: actions/upload-artifact@v1
-      if: always()
+      if: success()
       with:
         name: demo-document
         path: demo.pdf
