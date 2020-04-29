@@ -1,0 +1,16 @@
+\providecommand{\drawpetal}[8]{
+    % draw a petal
+    % required parameter(s): #1 -- rotation of the petal
+    %                        #2 -- outer color of the petal
+    %                        #3 -- inner color of the petal
+    %                        #4 -- kernel color of the petal    
+    %                        #5 -- outwards angle of the petal
+    %                        #6 -- inwards angle of the petal
+    %                        #7 -- offset in x axis
+    %                        #8 -- offset in y axis
+
+    \filldraw[rotate=#1,color=#2] (0,0) [out=#5,in=#6]to (#7,#8) -- (0,#8-#7) -- (-#7,#8) [out=-180-#6,in=180-#5]to (0, 0) -- cycle;
+    \fill[rotate=#1-6,#3,opacity=.65] (0,#8*0.25) circle (1.2pt);
+    \fill[rotate=#1+6,#3,opacity=.65] (0,#8*0.25) circle (1.2pt);
+    \fill[#4,opacity=.75] (0,0) circle (2.2pt);
+}
