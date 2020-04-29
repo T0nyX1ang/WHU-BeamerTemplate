@@ -21,7 +21,7 @@ This beamer template is designed for slides using beautiful spots in Wuhan Unive
 
 ## License
 
-* This project (excluding the Logo of Wuhan University) is licensed under LaTeX Project Public License, version 1.3c or later. See `LICENSE` for more details.
+* This project (excluding the Logo of Wuhan University) is licensed under LaTeX Project Public License, version 1.3c or later. See `LICENSE` and `MANIFEST` for more details.
 * Wuhan University maintains the copyright of The Logo of Wuhan University, which should not be used in ANY COMMERCIAL PRODUCTS.
 
 ## More details
