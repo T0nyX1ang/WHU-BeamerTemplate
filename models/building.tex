@@ -1,9 +1,10 @@
 % This model provides models for the building.
 % Please DO NOT compile this file directly.
 
-\providecommand{\drawbuilding}[1]{
+\providecommand{\drawbuilding}[2]{
     % draw a building
     % required parameter(s): #1 - the color of the building
+    %                        #2 - the color of the background
 
     \fill[#1] (-1, 0) rectangle (1, 2);
     \draw[#1] (-1.2, 0) rectangle (1.2, 2.2);
@@ -19,9 +20,9 @@
     \foreach \i in {-1, 1} 
         \filldraw[#1] (-5.8 * \i, 0) -- (-5.8 * \i, -0.3) -- (-5.5 * \i, -0.3) -- (-6.4 * \i, -1.8) -- (-11.4 * \i, -1.8) -- (-10.68 * \i, -0.6) -- (-10.5 * \i, -0.6) -- (-10.5 * \i, 3.5) -- (-6 * \i, 3.5) -- (-6 * \i, 0) -- cycle;
     \foreach \j in {8.97, 7.72, 6.47}
-        \filldraw[rounded corners, white] (\j, 2.4) rectangle (\j + 1, 3);
+        \filldraw[rounded corners, #2] (\j, 2.4) rectangle (\j + 1, 3);
     \foreach \j in {-8.97, -7.72, -6.47}
-        \filldraw[rounded corners, white] (\j, 2.4) rectangle (\j - 1, 3);
+        \filldraw[rounded corners, #2] (\j, 2.4) rectangle (\j - 1, 3);
 
     \filldraw[#1] (-10.5, 3.9) rectangle (10.5, 4.6);
     \filldraw[#1] (-10.5, 3.5) rectangle (10.5, 3.7);
