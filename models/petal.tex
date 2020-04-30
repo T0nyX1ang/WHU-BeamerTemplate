@@ -1,3 +1,6 @@
+% This model provides models for petals, sakuras and other components.
+% Please DO NOT compile this file directly.
+
 \providecommand{\drawpetal}[8]{
     % draw a petal
     % required parameter(s): #1 -- rotation of the petal
@@ -13,4 +16,16 @@
     \fill[rotate=#1-6,#3,opacity=.65] (0,#8*0.25) circle (1.2pt);
     \fill[rotate=#1+6,#3,opacity=.65] (0,#8*0.25) circle (1.2pt);
     \fill[#4,opacity=.75] (0,0) circle (2.2pt);
+}
+
+\providecommand{\drawsakura}[1]{
+    % draw a sakura
+    % required parameter(s): #1 -- sakura type
+    \foreach \x in {1,...,5}            
+    {
+        \ifcase#1\relax
+        \or\drawpetal{-(\x - 1) * 72}{嫣红}{樱桃色}{樱草色}{53}{-25}{0.25}{3.75} % Type 1 -- pink sakura
+        \or\drawpetal{-(\x - 1) * 72}{精白}{粉红}{樱草色}{53}{-25}{0.25}{3.75} % Type 2 -- white sakura
+        \fi
+    }
 }
