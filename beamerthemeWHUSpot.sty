@@ -30,7 +30,6 @@
 \setbeamercolor{enumerate subsubitem}{fg=宝蓝}
 
 \input{./models/building.tex}
-\input{./models/sakura.tex}
 \input{./models/petal.tex}
 
 \def\progressbar{
@@ -41,7 +40,7 @@
         \draw[pink!80!white, line width=0.4pt] (0, 0) -- (0, -0.8\paperheight);
         \pgfmathparse{-0.8 / \inserttotalframenumber * \paperheight * (\insertframenumber - 0.5)} % calculate the required shift
         \begin{scope}[yshift=\pgfmathresult, scale=.05]
-            \drawsakura{嫣红}{樱桃色}{樱草色}{53}{-25}{0.25}{3.75}
+            \drawsakura{1}
         \end{scope}
         \node[rounded corners, fill=gray, draw=gray, text width=4.5em, align=center, inner sep=2pt, text=white, anchor=east] at (0.405, -0.8\paperheight-5) %rounded rectangle west arc=none
         {
@@ -67,12 +66,43 @@
     \includegraphics[width=1cm,height=1cm]{./logos/whulogoblack.eps} \\
     \progressbar
 }
-\setbeamertemplate{background canvas}{%
-    \begin{tikzpicture}[scale=.4,opacity=.85]
-        \useasboundingbox (-17.3, 2.5) rectangle (24.3, 17.5);
-        \drawbuilding{霜色}
-    \end{tikzpicture}
+
+\setbeamertemplate{title page}{
+    % modified from default title page theme, adding a background canvas here.
+    \ifbeamercolorempty[bg]{background canvas}{}{
+        \centering
+        \begin{tikzpicture}[scale=.4,opacity=.85]
+            \useasboundingbox (-0.375, 15.2) rectangle (0.05, 10);
+            \drawbuilding{霜色}
+        \end{tikzpicture}
+    }%
+    \vbox{}
+    \vfill
+    \begingroup
+        \begin{beamercolorbox}[sep=8pt,center]{title}
+            \usebeamerfont{title}\inserttitle\par%
+            \ifx\insertsubtitle\@empty%
+            \else%
+                \vskip0.25em%
+                {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+            \fi%     
+        \end{beamercolorbox}%
+        \vskip1em\par
+        \begin{beamercolorbox}[sep=8pt,center]{author}
+            \usebeamerfont{author}\insertauthor
+        \end{beamercolorbox}
+        \begin{beamercolorbox}[sep=8pt,center]{institute}
+            \usebeamerfont{institute}\insertinstitute
+        \end{beamercolorbox}
+        \begin{beamercolorbox}[sep=8pt,center]{date}
+            \usebeamerfont{date}\insertdate
+        \end{beamercolorbox}
+        % no title graphics here
+        \vskip2.3em
+    \endgroup
+    \vfill
 }
+
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{section page}
 {
@@ -93,7 +123,7 @@
                 \draw[line width=0.1pt, color=霜色] (0, 0) -- (.8\paperheight, 0);
                 \pgfmathparse{0.8 / \inserttotalframenumber * \paperheight * (\insertframenumber - 0.5)} % calculate the required shift
                 \begin{scope}[xshift=\pgfmathresult, scale=.05]
-                    \drawsakura{pink!10!white}{white}{樱草色}{53}{-25}{0.25}{3.75}
+                    \drawsakura{2}
                 \end{scope}
             \end{tikzpicture}
         \end{frame}
