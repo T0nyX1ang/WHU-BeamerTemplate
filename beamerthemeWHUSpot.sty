@@ -40,7 +40,7 @@
     \begin{tikzpicture}
         % construct several paths to make room for the sakura
         \path (-0.5cm, 0) -- (0.5cm, 0);
-        \draw[pink!80!white, line width=0.4pt] (0, 0) -- (0, -0.8\paperheight);
+        \draw[line width=0.3pt, color=粉红] (0, 0) -- (0, -0.8\paperheight);
         \pgfmathparse{-0.8 / \inserttotalframenumber * \paperheight * (\insertframenumber - 0.5)} % calculate the required shift
         \begin{scope}[yshift=\pgfmathresult, scale=.05]
             \drawsakura{1}
@@ -123,7 +123,7 @@
             \hskip 0.1em
             % draw a horizontal progress bar here
             \begin{tikzpicture}
-                \draw[line width=0.1pt, color=霜色] (0, 0) -- (.8\paperheight, 0);
+                \draw[line width=0.4pt, color=霜色] (0, 0) -- (.8\paperheight, 0);
                 \pgfmathparse{0.8 / \inserttotalframenumber * \paperheight * (\insertframenumber - 0.5)} % calculate the required shift
                 \begin{scope}[xshift=\pgfmathresult, scale=.05]
                     \drawsakura{2}
