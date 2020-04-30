@@ -132,5 +132,52 @@
     \endgroup
 }
 
+% customize items
+\setbeamertemplate{itemize item}
+{
+    \begin{tikzpicture}[scale=.06, yshift=1.2]
+        \drawpetal{90}{嫣红}{樱桃色}{樱草色}{53}{-25}{0.25}{3.75}
+    \end{tikzpicture}
+}
+
+\setbeamertemplate{itemize subitem}
+{
+    \begin{tikzpicture}[scale=.05, yshift=1]
+        \drawpetal{90}{嫣红}{樱桃色}{樱草色}{53}{-25}{0.25}{3.75}
+    \end{tikzpicture}
+}
+
+\setbeamertemplate{itemize subsubitem}
+{
+    \begin{tikzpicture}[scale=.04, yshift=.8]
+        \drawpetal{90}{嫣红}{樱桃色}{樱草色}{53}{-25}{0.25}{3.75}
+    \end{tikzpicture}
+}
+
+% customize blocks
+\addtobeamertemplate{block begin}
+{
+    \begin{tikzpicture}
+        \draw[black, line width=1pt] (0, 0) -- (.8\paperheight, 0);
+    \end{tikzpicture}
+}{}
+
+\addtobeamertemplate{block alerted begin}
+{
+    \begin{tikzpicture}
+        \draw[酡红, line width=1pt] (0, 0) -- (.8\paperheight, 0);
+    \end{tikzpicture}
+}{}
+
+\addtobeamertemplate{block example begin}
+{
+    \begin{tikzpicture}
+        \draw[宝蓝, line width=1pt] (0, 0) -- (.8\paperheight, 0);
+    \end{tikzpicture}
+}{}
+
+% theorems
+\setbeamertemplate{theorems}[numbered]
+
 \mode
 <all>
