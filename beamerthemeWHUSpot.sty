@@ -1,7 +1,7 @@
-% beamerthemeWHUSpot.sty v1.1 2020/04/30
+% beamerthemeWHUSpot.sty v1.2.0 2020/05/01
 % A beamer theme based on the spots in Wuhan University.
 % Author: Tony Xiang
-% Licensed under LaTeX Project Public License, v1.3c or later.
+% Licensed under the LaTeX Project Public License, v1.3c or later.
 
 \mode<presentation>
 
@@ -34,6 +34,7 @@
 
 \input{./models/building.tex}
 \input{./models/petal.tex}
+\input{./models/cage.tex}
 
 \def\progressbar{
     % draw a vertical progress bar here
@@ -158,22 +159,22 @@
 % customize blocks
 \addtobeamertemplate{block begin}
 {
-    \begin{tikzpicture}
-        \draw[black, line width=1pt] (0, 0) -- (.8\paperheight, 0);
+    \begin{tikzpicture}[overlay]
+        \drawcage{black}{.3\paperheight}{.1\paperheight}{0.05}{-0.3}
     \end{tikzpicture}
 }{}
 
 \addtobeamertemplate{block alerted begin}
 {
-    \begin{tikzpicture}
-        \draw[酡红, line width=1pt] (0, 0) -- (.8\paperheight, 0);
+    \begin{tikzpicture}[overlay]
+        \drawcage{酡红}{.3\paperheight}{.1\paperheight}{0.05}{-0.3}
     \end{tikzpicture}
 }{}
 
 \addtobeamertemplate{block example begin}
 {
-    \begin{tikzpicture}
-        \draw[宝蓝, line width=1pt] (0, 0) -- (.8\paperheight, 0);
+    \begin{tikzpicture}[overlay]
+        \drawcage{宝蓝}{.3\paperheight}{.1\paperheight}{0.05}{-0.3}
     \end{tikzpicture}
 }{}
 

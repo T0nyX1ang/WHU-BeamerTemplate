@@ -1,3 +1,5 @@
+%!TeX Options=--shell-escape
+
 \documentclass{beamer}
 \usepackage{ctex}
 \usepackage{tikz}
@@ -6,6 +8,8 @@
 \usepackage{amsthm,amsmath}
 \usepackage{fancyvrb}
 \usepackage{url}
+\usepackage{minted}
+\usepackage{verbatim}
 
 \usetikzlibrary{calc}
 \usetheme{WHUSpot}
@@ -37,45 +41,103 @@
 
 \begin{frame}
     \frametitle{列表与枚举环境}
+    列表和枚举环境均可以定义三级，但是本模板中\alert{建议使用列表环境}，以下为列表环境和枚举环境示例.
     \begin{itemize}
-        \item 列表环境是beamer默认的，可以修改. \pause
-        \item 支持多级列表，但修改环境要逐级修改，\alert{不建议}使用. \pause
+        \item 这是一级内容. \pause
+        \item 这是一级的另一个内容. \pause
+        \begin{itemize}
+            \item 这是二级内容. \pause
+            \item 这是二级的另一个内容. \pause
+            \begin{itemize}
+                 \item 这是三级内容. \pause
+                 \item 没有四级内容的环境了. \pause
+            \end{itemize} 
+        \end{itemize}
     \end{itemize}
 
     \begin{enumerate}
-        \item 枚举环境是beamer默认的，可以修改. \pause
-        \item 支持多级枚举，但修改环境要逐级修改，\alert{不建议}使用.
+        \item This is an enumeration. \pause
+        \item This is another one. \pause
+        \begin{enumerate}
+             \item This is an enumeration. \pause
+             \item Stop here. 
+         \end{enumerate} 
     \end{enumerate}
 \end{frame}
 
 \begin{frame}
-    \frametitle{定理的一个例子}
-    \begin{theorem}[Risez定理的一个应用]
-    \begin{equation*}
-        f_n \stackrel{m}{\longrightarrow} f \Leftrightarrow \forall \{f_{n_k}\} \subset \{f_n\}, \exists \{f_{n_{k'}}\} \subset \{f_{n_k}\}, s.t. \quad f_{n_{k'}} \to f \quad a.e.     
-    \end{equation*}
-    \end{theorem}
-    \renewcommand{\qedsymbol}{}
-    \begin{proof}
-        （$\Rightarrow$）设$f_n \stackrel{m}{\longrightarrow}f$，则$\forall \{f_{n_k}\} \subset \{f_n\}$，$f_{n_k} \stackrel{m}{\longrightarrow} f$（直接按照定义证明），由\textbf{定理$3$}（Risez定理），$\exists \{f_{n_{k'}}\} \subset \{f_{n_k}\}, s.t. \quad f_{n_{k'}} \to f \quad a.e. (k' \to \infty).$ \\
-        （$\Leftarrow$）用反证法，若$\{f_n\} \stackrel{m}{\nrightarrow} f$，$\exists \varepsilon > 0, s.t. \quad m(E(|f_n - f| \geqslant \varepsilon)) \nrightarrow 0$，于是$\exists \delta > 0, \{f_{n_k}\} \subset \{f_n\}, s.t.$ \[m(E(|f_{n_k} - f| \geqslant \varepsilon)) \geqslant \delta, \quad k = 1, 2, \cdots.\] 
-    \end{proof}
+    \frametitle{普通，强调，示例块与分栏}
+    黑色的是普通文字.红色（酡红）的是\alert{强调}文字. \pause
+
+    以下是普通块，强调块和示例块（主要就是上面线的颜色不一样），以及它们的分栏显示结果，注意\alert{最多只分两栏}，否则视觉效果不好.
+    \begin{columns}
+        \begin{column}{4cm}
+            \begin{block}{普通块}
+                这是一个普通块. \pause
+            \end{block}
+
+            \begin{alertblock}{强调块}
+                这是一个强调块. \pause
+            \end{alertblock}
+
+            \begin{exampleblock}{示例块}
+                这是一个示例块. \pause
+            \end{exampleblock}
+        \end{column}
+
+        \begin{column}{4cm}
+            \begin{block}{普通块}
+                这是一个普通块. \pause
+            \end{block}
+
+            \begin{alertblock}{强调块}
+                这是一个强调块. \pause
+            \end{alertblock}
+
+            \begin{exampleblock}{示例块}
+                这是一个示例块. \pause
+            \end{exampleblock}
+        \end{column}
+    \end{columns}
+
 \end{frame}
 
 \begin{frame}
-    \frametitle{定理的一个例子(续)}
-    \begin{proof}[证明（续）]
-        另一方面，由假设条件，$\exists \{f_{n_{k'}}\} \subset \{f_{n_k}\}, s.t. \quad f_{n_{k'}} \to f \quad a.e.$ \\
-        因为$m(E) < \infty$，由\textbf{定理$2$}，$f_{n_{k'}} \stackrel{m}{\longrightarrow} f$，从而得出矛盾.从而$f_n \stackrel{m}{\longrightarrow} f$.
+    \frametitle{定理与脚注}
+    \begin{theorem}[一元二次方程的解]
+    \begin{equation*}
+        a x^2 + b x + c = 0, a \neq 0 \mbox{~的解为~} x_{1, 2} = \frac{-b \pm \sqrt{b^2 - 4 a c}}{2 a} 
+    \end{equation*}
+    \end{theorem}
+    \begin{proof}
+        用配方法，可得：
+        \begin{equation*}
+            (x + \frac{b}{2a})^2 = \frac{b^2 - 4 a c}{4a^2}
+        \end{equation*}
+        开根号\footnote{需要在复数意义下考虑.}即可.
     \end{proof}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{代码显示}
+    代码显示可以结合~\verb|minted|宏包或者其它用于显示代码的宏包，但是一般需要每个frame中传入fragile参数.在使用~\verb|minted|宏包时，编译时需要加上~\verb|--shell-escape|参数，并用~\verb|Python|安装~\verb|Pygments|依赖.以下是一个示例.
+    \begin{minted}{c}
+    #include<stdio.h>
+    int main(int argc, char const *argv[])
+    {
+        printf("%s\n", "hello world!");
+        return 0;
+    }
+    \end{minted}
 \end{frame}
 
 \section{设计灵感}
 \begin{frame}
     \frametitle{配色}
-    红，蓝，黑为主，绿，很浅的白为辅.
-
-    用cncolours包配色.
+    \begin{itemize}
+        \item 红，蓝，黑为主，绿，白为辅，背景为缟.
+        \item 用cncolours包配色.
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -96,7 +158,7 @@
     \frametitle{老图书馆不是一日建成的}
     \begin{figure}
     \centering
-    \def\buildingcolor{blue}
+    \def\buildingcolor{蟹壳青}
     \begin{tikzpicture}[scale=.4]
         \useasboundingbox (-0.2, 0.5) rectangle (0.05, 10);
         \fill[\buildingcolor] (-1, 0) rectangle (1, 2);
@@ -114,9 +176,9 @@
         \foreach \i in {-1, 1} 
             \filldraw[\buildingcolor] (-5.8 * \i, 0) -- (-5.8 * \i, -0.3) -- (-5.5 * \i, -0.3) -- (-6.4 * \i, -1.8) -- (-11.4 * \i, -1.8) -- (-10.68 * \i, -0.6) -- (-10.5 * \i, -0.6) -- (-10.5 * \i, 3.5) -- (-6 * \i, 3.5) -- (-6 * \i, 0) -- cycle;
         \foreach \j in {8.97, 7.72, 6.47}
-            \filldraw[rounded corners, white] (\j, 2.4) rectangle (\j+ 1, 3);
+            \filldraw[rounded corners, color=缟] (\j, 2.4) rectangle (\j+ 1, 3);
         \foreach \j in {-8.97, -7.72, -6.47}
-            \filldraw[rounded corners, white] (\j, 2.4) rectangle (\j- 1, 3);
+            \filldraw[rounded corners, color=缟] (\j, 2.4) rectangle (\j- 1, 3);
         \pause
 
         \filldraw[\buildingcolor] (-10.5, 3.9) rectangle (10.5, 4.6);
@@ -184,24 +246,22 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
     \frametitle{杂项}
     \begin{itemize}
         \item 本来想用樱花实现一个更复杂的progress bar的，最后放弃了.
-        \item 因为背景用的老图书馆的背景，使用一个带颜色的block显得多余，所以很多地方直接使用了 beamer 的默认配置.
         \item titlepage页\alert{默认没有}frametitle.
-        \item 樱花和老图书馆被封装为独立的模板，可以将其放在tikzpicture中进行修改.
-        \item 有一些模板是可以重新设定的，可以见最后一页. \hyperlink{final}{\beamerbutton{Final}}
+        \item 樱花（花瓣）和老图书馆被封装为独立的指令，详见~\verb|./models| 文件夹，使用时需要放在~\verb|tikzpicture|环境中，通过传入不同参数可以得到不同效果，见最后一页. \hyperlink{final}{\beamerbutton{Final}}
     \end{itemize}
 \end{frame}
 
 \begingroup
-\setbeamertemplate{background canvas}{}
+\setbeamercolor{background canvas}{bg=缟}
 \begin{frame}[label=final]
 \begin{figure}
     \centering
     \begin{tikzpicture}[scale=.4]
-        \drawbuilding{蟹壳青}
+        \drawbuilding{蟹壳青}{缟}
         \begin{scope}[xshift=0cm,yshift=12.5cm,scale=.2]
             \drawsakura{1}
         \end{scope}
