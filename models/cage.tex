@@ -1,0 +1,15 @@
+% This model provides models for cages above blocks (including theorems).
+% Please DO NOT compile this file directly.
+
+\providecommand{\drawcage}[5]{
+    % draw a cage
+    % required parameter(s): #1 color of the cage
+    %                        #2 length of the longer side
+    %                        #3 length of the shorter side
+    %                        #4 size of the kernel square
+    %                        #5 offset in x axis
+
+    \draw[color=#1, line width=1pt] (#5+#4-0.01, 0) -- (#2, 0); % move into 0.01 unit to beautify
+    \draw[color=#1, line width=1pt] (#5, -#4+0.01) -- (#5, -#3); % move into 0.01 unit to beautify
+    \filldraw[color=#1] (#5-#4, 0) -- (#5, #4) -- (#5+#4, 0) -- (#5, -#4) -- cycle;
+}
