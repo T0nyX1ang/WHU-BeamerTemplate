@@ -16,8 +16,8 @@ This beamer template is designed for slides using beautiful spots in Wuhan Unive
 
 ## Contribution
 
-* Open an issue you encounter a bug or want to propose new features.
-* Pull requests are greatly welcomed, and they will be validated with several tests.
+* Open an issue if you encounter a bug or want to propose new features.
+* Pull requests are **greatly** welcomed, and they will be validated with several tests.
 
 ## License
 
@@ -26,5 +26,5 @@ This beamer template is designed for slides using beautiful spots in Wuhan Unive
 
 ## More details
 
-* Refer to the `demo.pdf` that have been compiled by yourself, or see the [Github Action page](https://github.com/T0nyX1ang/WHU-BeamerTemplate/actions) for 
+* Refer to the `demo.pdf` that has been compiled by yourself, or see the [Github Action page](https://github.com/T0nyX1ang/WHU-BeamerTemplate/actions) for 
 `demo-document` artifacts.
