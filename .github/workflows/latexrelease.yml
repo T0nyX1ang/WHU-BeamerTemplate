@@ -6,7 +6,7 @@ name: LaTeX Release
 
 on:
   release:
-    types: [ edited ]
+    types: [ created ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -22,11 +22,6 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-    
-    - name: Run a multi-line script
-      run: |
-        echo ${{ github.sha }}
-        echo ${{ github.ref }}.
 
     # Compile the LaTeX document with XeLaTeX
     - name: Github Action for LaTeX
