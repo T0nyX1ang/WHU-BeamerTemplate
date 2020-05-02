@@ -181,6 +181,28 @@
     \end{tikzpicture}
 }{}
 
+% toc
+\addtobeamertemplate{section in toc}
+{
+    \begin{tikzpicture}[scale=.06, yshift=1.2]
+        \drawpetal{90}{嫣红}{樱桃色}{樱草色}{53}{-25}{0.25}{3.75}
+    \end{tikzpicture}
+}
+
+\addtobeamertemplate{subsection in toc}
+{
+    \begin{tikzpicture}[scale=.05, yshift=1]
+        \drawpetal{90}{嫣红}{樱桃色}{樱草色}{53}{-25}{0.25}{3.75}
+    \end{tikzpicture}
+}
+
+\addtobeamertemplate{subsubsection in toc}
+{
+    \begin{tikzpicture}[scale=.04, yshift=.8]
+        \drawpetal{90}{嫣红}{樱桃色}{樱草色}{53}{-25}{0.25}{3.75}
+    \end{tikzpicture}
+}
+
 % theorems
 \setbeamertemplate{theorems}[numbered]
 
