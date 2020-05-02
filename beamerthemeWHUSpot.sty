@@ -41,17 +41,15 @@
     \begin{tikzpicture}
         % construct several paths to make room for the sakura
         \path (-0.5cm, 0) -- (0.5cm, 0);
-        \draw[line width=0.3pt, color=粉红] (0, 0) -- (0, -0.8\paperheight);
-        \foreach \i in {1,...,\inserttotalframenumber}
-        {
-            \filldraw[color=粉红] (0, -\i / \inserttotalframenumber * 0.8 * \paperheight + 0.4 / \inserttotalframenumber * \paperheight) circle (1pt);
-        }
+        \draw[line width=0.2pt, color=粉红] (0, 0) -- (0, -0.85\paperheight); % make larger room
 
-        \pgfmathparse{-0.8 / \inserttotalframenumber * \paperheight * (\insertframenumber - 0.5)} % calculate the required shift
-        \begin{scope}[yshift=\pgfmathresult, scale=.05]
+        \draw[line width=0.8pt, color=粉红] (0, -0.8 / \insertdocumentendpage * \paperheight * \insertsectionstartpage + 0.4 / \insertdocumentendpage * \paperheight) -- (0, -0.8 / \insertdocumentendpage * \paperheight * \insertsectionendpage + 0.4 / \insertdocumentendpage * \paperheight); % extinguish current section by line width
+
+        % draw current page
+        \begin{scope}[yshift=-0.8 / \insertdocumentendpage * \paperheight * \insertpagenumber + 0.4 / \insertdocumentendpage * \paperheight, scale=.05]
             \drawsakura{1}
         \end{scope}
-        \node[rounded corners, fill=gray, draw=gray, text width=4.5em, align=center, inner sep=2pt, text=white, anchor=east] at (0.405, -0.8\paperheight-5) %rounded rectangle west arc=none
+        \node[rounded corners, fill=gray, draw=gray, text width=4.5em, align=center, inner sep=2pt, text=white, anchor=east] at (0.405, -0.85\paperheight) %rounded rectangle west arc=none
         {
             \insertframenumber\ /\ \inserttotalframenumber
         };
@@ -129,9 +127,9 @@
             \hskip 0.1em
             % draw a horizontal progress bar here
             \begin{tikzpicture}
-                \draw[line width=0.4pt, color=霜色] (0, 0) -- (.8\paperheight, 0);
-                \pgfmathparse{0.8 / \inserttotalframenumber * \paperheight * (\insertframenumber - 0.5)} % calculate the required shift
-                \begin{scope}[xshift=\pgfmathresult, scale=.05]
+                \draw[line width=0.2pt, color=霜色] (0, 0) -- (.85\paperheight, 0);
+                \draw[line width=0.8pt, color=霜色] (0.8 / \insertdocumentendpage * \paperheight * \insertsectionstartpage + 0.4 / \insertdocumentendpage * \paperheight, 0) -- (0.8 / \insertdocumentendpage * \paperheight * \insertsectionendpage + 0.4 / \insertdocumentendpage * \paperheight, 0); % extinguish current section by line width
+                \begin{scope}[xshift=0.8 / \insertdocumentendpage * \paperheight * \insertpagenumber + 0.4 / \insertdocumentendpage * \paperheight, scale=.05]
                     \drawsakura{2}
                 \end{scope}
             \end{tikzpicture}
