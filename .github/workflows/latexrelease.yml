@@ -39,6 +39,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: https://uploads.github.com/repos/T0nyX1ang/WHU-BeamerTemplate/releases/${{ github.ref }}/assets{?name,label}
-        asset_path: ./demo.pdf
+        asset_path: demo.pdf
         asset_name: demo.pdf
         asset_content_type: application/pdf
