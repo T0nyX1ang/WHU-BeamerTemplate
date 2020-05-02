@@ -42,6 +42,11 @@
         % construct several paths to make room for the sakura
         \path (-0.5cm, 0) -- (0.5cm, 0);
         \draw[line width=0.3pt, color=粉红] (0, 0) -- (0, -0.8\paperheight);
+        \foreach \i in {1,...,\inserttotalframenumber}
+        {
+            \filldraw[color=粉红] (0, -\i / \inserttotalframenumber * 0.8 * \paperheight + 0.4 / \inserttotalframenumber * \paperheight) circle (1pt);
+        }
+
         \pgfmathparse{-0.8 / \inserttotalframenumber * \paperheight * (\insertframenumber - 0.5)} % calculate the required shift
         \begin{scope}[yshift=\pgfmathresult, scale=.05]
             \drawsakura{1}
