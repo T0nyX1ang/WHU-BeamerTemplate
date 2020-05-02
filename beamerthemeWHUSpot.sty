@@ -24,12 +24,6 @@
 \setbeamercolor{block title}{fg=black}
 \setbeamercolor{block title alerted}{fg=酡红}
 \setbeamercolor{block title example}{fg=宝蓝}
-\setbeamercolor{itemize item}{fg=宝蓝}
-\setbeamercolor{itemize subitem}{fg=宝蓝}
-\setbeamercolor{itemize subsubitem}{fg=宝蓝}
-\setbeamercolor{enumerate item}{fg=宝蓝}
-\setbeamercolor{enumerate subitem}{fg=宝蓝}
-\setbeamercolor{enumerate subsubitem}{fg=宝蓝}
 \setbeamercolor{background canvas}{bg=缟}
 
 \input{./models/building.tex}
@@ -131,21 +125,43 @@
 \setbeamertemplate{itemize item}
 {
     \begin{tikzpicture}[scale=.06, yshift=1.2]
-        \drawpetal{90}{嫣红}{樱桃色}{樱草色}{53}{-25}{0.25}{3.75}
+        \drawpetal{90}{1}
     \end{tikzpicture}
 }
 
 \setbeamertemplate{itemize subitem}
 {
     \begin{tikzpicture}[scale=.05, yshift=1]
-        \drawpetal{90}{嫣红}{樱桃色}{樱草色}{53}{-25}{0.25}{3.75}
+        \drawpetal{90}{1}
     \end{tikzpicture}
 }
 
 \setbeamertemplate{itemize subsubitem}
 {
     \begin{tikzpicture}[scale=.04, yshift=.8]
-        \drawpetal{90}{嫣红}{樱桃色}{樱草色}{53}{-25}{0.25}{3.75}
+        \drawpetal{90}{1}
+    \end{tikzpicture}
+}
+
+% toc
+\addtobeamertemplate{section in toc}
+{
+    \begin{tikzpicture}[scale=.06, yshift=1.2]
+        \drawpetal{90}{1}
+    \end{tikzpicture}
+}
+
+\addtobeamertemplate{subsection in toc}
+{
+    \begin{tikzpicture}[scale=.05, yshift=1]
+        \drawpetal{90}{1}
+    \end{tikzpicture}
+}
+
+\addtobeamertemplate{subsubsection in toc}
+{
+    \begin{tikzpicture}[scale=.04, yshift=.8]
+        \drawpetal{90}{1}
     \end{tikzpicture}
 }
 
@@ -170,28 +186,6 @@
         \drawcage{宝蓝}{.3\paperheight}{.1\paperheight}{0.05}{-0.3}
     \end{tikzpicture}
 }{}
-
-% toc
-\addtobeamertemplate{section in toc}
-{
-    \begin{tikzpicture}[scale=.06, yshift=1.2]
-        \drawpetal{90}{嫣红}{樱桃色}{樱草色}{53}{-25}{0.25}{3.75}
-    \end{tikzpicture}
-}
-
-\addtobeamertemplate{subsection in toc}
-{
-    \begin{tikzpicture}[scale=.05, yshift=1]
-        \drawpetal{90}{嫣红}{樱桃色}{樱草色}{53}{-25}{0.25}{3.75}
-    \end{tikzpicture}
-}
-
-\addtobeamertemplate{subsubsection in toc}
-{
-    \begin{tikzpicture}[scale=.04, yshift=.8]
-        \drawpetal{90}{嫣红}{樱桃色}{樱草色}{53}{-25}{0.25}{3.75}
-    \end{tikzpicture}
-}
 
 % theorems
 \setbeamertemplate{theorems}[numbered]
