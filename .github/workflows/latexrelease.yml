@@ -33,7 +33,7 @@ jobs:
         
     # Upload demo to releases if the demo is compiled successfully
     - name: Upload release asset
-      uses: johnwbyrd/update-release@v1
+      uses: johnwbyrd/update-release@v1.0.0
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         asset: demo.pdf
