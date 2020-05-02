@@ -1,0 +1,40 @@
+% progressbar.tex v1.2.3
+% This model provides models for horizontal and vertical progress bar.
+% Please DO NOT compile this file directly.
+% Author: Tony Xiang
+% Licensed under the LaTeX Project Public License, v1.3c or later.
+
+\providecommand{\drawprogressbarh}[7]{
+    % draw a horizontal progressbar
+    % required parameter(s): #1 the color of progressbar
+    %                        #2 length of progressbar (factor = 0.85/0.8)
+    %                        #3 total pages
+    %                        #4 start page of current section
+    %                        #5 end page of current section
+    %                        #6 current page
+    %                        #7 sakura type
+
+    \draw[line width=0.2pt, color=#1] (0, 0) -- (.85#2, 0);
+    \draw[line width=0.8pt, color=#1] (0.8 / #3 * #2 * #4 + 0.4 / #3 * #2, 0) -- (0.8 / #3 * #2 * #5 + 0.4 / #3 * #2, 0); % extinguish current section by line width
+    \begin{scope}[xshift=0.8 / #3 * #2 * #6 + 0.4 / #3 * #2, scale=.05]
+        \drawsakura{#7}
+    \end{scope}
+}
+
+\providecommand{\drawprogressbarv}[7]{
+    % draw a horizontal progressbar
+    % required parameter(s): #1 the color of progressbar
+    %                        #2 length of progressbar (factor = 0.85/0.8)
+    %                        #3 total pages
+    %                        #4 start page of current section
+    %                        #5 end page of current section
+    %                        #6 current page
+    %                        #7 sakura type
+
+    \draw[line width=0.2pt, color=#1] (0, 0) -- (0, -0.85#2);
+    \draw[line width=0.8pt, color=#1] (0, -0.8 / #3 * #2 * #4 + 0.4 / #3 * #2) -- (0, -0.8 / #3 * #2 * #5 + 0.4 / #3 * #2);
+    \begin{scope}[yshift=-0.8 / #3 * #2 * #6 + 0.4 / #3 * #2, scale=.05]
+        \drawsakura{#7}
+    \end{scope}
+
+}
