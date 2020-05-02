@@ -17,7 +17,7 @@
     \draw[line width=0.2pt, color=#1] (0, 0) -- (.85#2, 0);
     \draw[line width=0.8pt, color=#1] (0.8 / #3 * #2 * #4 + 0.4 / #3 * #2, 0) -- (0.8 / #3 * #2 * #5 + 0.4 / #3 * #2, 0); % extinguish current section by line width
     \begin{scope}[xshift=0.8 / #3 * #2 * #6 + 0.4 / #3 * #2, scale=.05]
-        \drawsakura{#7}
+        \drawflower{5}{#7}
     \end{scope}
 }
 
@@ -34,7 +34,7 @@
     \draw[line width=0.2pt, color=#1] (0, 0) -- (0, -0.85#2);
     \draw[line width=0.8pt, color=#1] (0, -0.8 / #3 * #2 * #4 + 0.4 / #3 * #2) -- (0, -0.8 / #3 * #2 * #5 + 0.4 / #3 * #2);
     \begin{scope}[yshift=-0.8 / #3 * #2 * #6 + 0.4 / #3 * #2, scale=.05]
-        \drawsakura{#7}
+        \drawflower{5}{#7}
     \end{scope}
 
 }
