@@ -150,19 +150,12 @@
 \begin{frame}[fragile]
     \frametitle{自定义}
     \begin{itemize}
-        \item 配色：目前包括一套配色方案，详见~\verb|colors|文件夹，自定义配色方案需要给出相应参数的定义.
+        \item 配色：目前包括两套配色方案，详见~\verb|colors|文件夹，自定义配色方案需要给出相应参数的定义.
         \item 绘图模型：目前包括四个模型，详见~\verb|models|文件夹，引用模型需要传入相应参数，并置于~\verb|tikzpicture|环境中.
     \end{itemize}
 \end{frame}
 
 \section{设计灵感}
-\begin{frame}
-    \frametitle{配色}
-    \begin{itemize}
-        \item 红，蓝，黑为主，绿，白为辅，背景为缟.
-        \item 用cncolours包配色.
-    \end{itemize}
-\end{frame}
 
 \begin{frame}
     \frametitle{一瓣瓣的樱花}
@@ -200,9 +193,9 @@
         \foreach \i in {-1, 1} 
             \filldraw[\bdcolors] (-5.8 * \i, 0) -- (-5.8 * \i, -0.3) -- (-5.5 * \i, -0.3) -- (-6.4 * \i, -1.8) -- (-11.4 * \i, -1.8) -- (-10.68 * \i, -0.6) -- (-10.5 * \i, -0.6) -- (-10.5 * \i, 3.5) -- (-6 * \i, 3.5) -- (-6 * \i, 0) -- cycle;
         \foreach \j in {8.97, 7.72, 6.47}
-            \filldraw[rounded corners, color=缟] (\j, 2.4) rectangle (\j+ 1, 3);
+            \filldraw[rounded corners, color=backgroundcolor] (\j, 2.4) rectangle (\j+ 1, 3);
         \foreach \j in {-8.97, -7.72, -6.47}
-            \filldraw[rounded corners, color=缟] (\j, 2.4) rectangle (\j- 1, 3);
+            \filldraw[rounded corners, color=backgroundcolor] (\j, 2.4) rectangle (\j- 1, 3);
         \pause
 
         \filldraw[\bdcolors] (-10.5, 3.9) rectangle (10.5, 4.6);
