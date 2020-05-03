@@ -16,11 +16,10 @@
 \usepackage{minted}
 \usepackage{verbatim}
 
-\input{./colors/default.tex} % include color theme before the theme is loaded
-
 \usetikzlibrary{calc}
 \usetheme{WHUSpot}
 \usefonttheme{serif}
+\usecolorstyle{default}
 \mode<presentation>
 
 \title{武汉大学主题 Beamer 模板 - WHUSpot}
@@ -45,11 +44,11 @@
 
 \subsubsection{subsubsection也一样}
 
-\begin{frame}
+\begin{frame}[fragile]
     \frametitle{使用方法与注意事项}
     \begin{itemize}
         \item 本模板适用于\alert{较短的，内容层级不深的}展示.
-        \item 用 $\backslash \mbox{usetheme\{WHUSpot\}}$ 即可载入模板，当然也需要将 beamerthemeWHUSpot.sty 放在合适的地方（其实在同目录下就行）.
+        \item 用~\verb|\usetheme{WHUSpot}| 即可载入模板，当然也需要将 beamerthemeWHUSpot.sty 放在合适的地方（其实在同目录下就行）.
         \item 请使用 \hologo{XeLaTeX} 编译，一般而言使用\alert{TeX Live 2018}及以上版本能够保证正常编译（当然稍微低版本的TeX Live应该也没问题）.
         \item 本人\alert{没有设计subsection及以下层次}的页面，仅在有section时调用一个特别的页面，请谨慎组织标题内容.
     \end{itemize}
@@ -136,7 +135,7 @@
 
 \begin{frame}[fragile]
     \frametitle{代码显示}
-    代码显示可以结合~\verb|minted|宏包或者其它用于显示代码的宏包，但是一般需要每个frame中传入fragile参数.在使用~\verb|minted|宏包时，编译时需要加上~\verb|--shell-escape|参数，并用~\verb|Python|安装~\verb|Pygments|依赖.以下是一个示例.
+    代码显示可以结合~\verb|minted| 宏包或者其它用于显示代码的宏包，但是一般需要每个frame中传入fragile参数.在使用~\verb|minted| 宏包时，编译时需要加上~\verb|--shell-escape| 参数，并用~\verb|Python| 安装~\verb|Pygments| 依赖.以下是一个示例.
     \begin{minted}{c}
     #include<stdio.h>
     int main(int argc, char const *argv[])
@@ -150,8 +149,8 @@
 \begin{frame}[fragile]
     \frametitle{自定义}
     \begin{itemize}
-        \item 配色：目前包括两套配色方案，详见~\verb|colors|文件夹，自定义配色方案需要给出相应参数的定义.
-        \item 绘图模型：目前包括四个模型，详见~\verb|models|文件夹，引用模型需要传入相应参数，并置于~\verb|tikzpicture|环境中.
+        \item 配色：目前包括两套配色方案~\verb|default| 和~\verb|dark| ，详见~\verb|colors| 文件夹，自定义配色方案需要给出相应参数的定义，引用配色方案可以使用~\verb|\usecolorstyle{...}| 命令.
+        \item 绘图模型：目前包括四个模型，详见~\verb|models| 文件夹，引用模型需要传入相应参数，并置于~\verb|tikzpicture| 环境中.
     \end{itemize}
 \end{frame}
 
