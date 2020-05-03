@@ -13,24 +13,25 @@
 
 \usefonttheme[onlymath]{serif}
 
-\setbeamercolor{normal text}{fg=black}
-\setbeamercolor{alerted text}{fg=酡红}
-\setbeamercolor{example text}{fg=宝蓝}
-\setbeamercolor{titlelike}{fg=black}
-\setbeamercolor{frametitle}{fg=white,bg=海棠红}
-\setbeamercolor{qed symbol}{fg=松花色}
-\setbeamercolor{button}{fg=white,bg=松花色}
-\setbeamercolor{footnote mark}{fg=松花色}
-\setbeamercolor{block title}{fg=black}
-\setbeamercolor{block title alerted}{fg=酡红}
-\setbeamercolor{block title example}{fg=宝蓝}
-\setbeamercolor{background canvas}{bg=缟}
+\input{./colors/default.tex}
 
 \input{./models/building.tex}
 \input{./models/petal.tex}
 \input{./models/cage.tex}
 \input{./models/progressbar.tex} % please put this after petal.tex
 
+\setbeamercolor{normal text}{fg=normalcolor}
+\setbeamercolor{alerted text}{fg=alertedcolor}
+\setbeamercolor{example text}{fg=examplecolor}
+\setbeamercolor{titlelike}{fg=normalcolor}
+\setbeamercolor{frametitle}{fg=normalcolorreverse,bg=standoutcolor}
+\setbeamercolor{qed symbol}{fg=accessorycolor}
+\setbeamercolor{button}{fg=normalcolorreverse,bg=accessorycolor}
+\setbeamercolor{footnote mark}{fg=accessorycolor}
+\setbeamercolor{block title}{fg=normalcolor}
+\setbeamercolor{block title alerted}{fg=alertedcolor}
+\setbeamercolor{block title example}{fg=examplecolor}
+\setbeamercolor{background canvas}{bg=backgroundcolor}
 \def\progressbar{
     % draw a vertical progress bar here
     \begin{tikzpicture}
@@ -68,7 +69,7 @@
         \centering
         \begin{tikzpicture}[scale=.4,opacity=.85]
             \useasboundingbox (-0.375, 15.2) rectangle (0.05, 10);
-            \drawbuilding{雪白}{缟}
+            \drawbuilding{buildingcolor}{backgroundcolor}
         \end{tikzpicture}
     }%
     \vbox{}
@@ -105,17 +106,17 @@
         \setbeamertemplate{background canvas}
         {
             \begin{tikzpicture}
-                \fill[color=海棠红] (0, 0) rectangle (\paperwidth, \paperheight);
+                \fill[color=standoutcolor] (0, 0) rectangle (\paperwidth, \paperheight);
             \end{tikzpicture}
         }
         \begin{frame}[c, plain]
             \vskip 1.2em
-            \textcolor{white}{\insertsection}
+            \textcolor{normalcolorreverse}{\insertsection}
             \vskip 0.3em
             \hskip 0.1em
             % draw a horizontal progress bar here
             \begin{tikzpicture}
-                \drawprogressbarh{霜色}{\paperheight}{\insertdocumentendpage}{\insertsectionstartpage}{\insertsectionendpage}{\insertpagenumber}{2}
+                \drawprogressbarh{horizontalpbarcolor}{\paperheight}{\insertdocumentendpage}{\insertsectionstartpage}{\insertsectionendpage}{\insertpagenumber}{\horizontalpbartype}
             \end{tikzpicture}
         \end{frame}
     \endgroup
@@ -125,21 +126,21 @@
 \setbeamertemplate{itemize item}
 {
     \begin{tikzpicture}[scale=.06, yshift=1.2]
-        \drawpetal{90}{1}
+        \drawpetal{90}{\itemliketype}
     \end{tikzpicture}
 }
 
 \setbeamertemplate{itemize subitem}
 {
     \begin{tikzpicture}[scale=.05, yshift=1]
-        \drawpetal{90}{1}
+        \drawpetal{90}{\itemliketype}
     \end{tikzpicture}
 }
 
 \setbeamertemplate{itemize subsubitem}
 {
     \begin{tikzpicture}[scale=.04, yshift=.8]
-        \drawpetal{90}{1}
+        \drawpetal{90}{\itemliketype}
     \end{tikzpicture}
 }
 
@@ -147,21 +148,21 @@
 \addtobeamertemplate{section in toc}
 {
     \begin{tikzpicture}[scale=.06, yshift=1.2]
-        \drawpetal{90}{1}
+        \drawpetal{90}{\itemliketype}
     \end{tikzpicture}
 }
 
 \addtobeamertemplate{subsection in toc}
 {
     \begin{tikzpicture}[scale=.05, yshift=1]
-        \drawpetal{90}{1}
+        \drawpetal{90}{\itemliketype}
     \end{tikzpicture}
 }
 
 \addtobeamertemplate{subsubsection in toc}
 {
     \begin{tikzpicture}[scale=.04, yshift=.8]
-        \drawpetal{90}{1}
+        \drawpetal{90}{\itemliketype}
     \end{tikzpicture}
 }
 
@@ -169,21 +170,21 @@
 \addtobeamertemplate{block begin}
 {
     \begin{tikzpicture}[overlay]
-        \drawcage{black}{.3\paperheight}{.1\paperheight}{0.05}{-0.3}
+        \drawcage{normalcolor}{.3\paperheight}{.1\paperheight}{0.05}{-0.3}
     \end{tikzpicture}
 }{}
 
 \addtobeamertemplate{block alerted begin}
 {
     \begin{tikzpicture}[overlay]
-        \drawcage{酡红}{.3\paperheight}{.1\paperheight}{0.05}{-0.3}
+        \drawcage{alertedcolor}{.3\paperheight}{.1\paperheight}{0.05}{-0.3}
     \end{tikzpicture}
 }{}
 
 \addtobeamertemplate{block example begin}
 {
     \begin{tikzpicture}[overlay]
-        \drawcage{宝蓝}{.3\paperheight}{.1\paperheight}{0.05}{-0.3}
+        \drawcage{examplecolor}{.3\paperheight}{.1\paperheight}{0.05}{-0.3}
     \end{tikzpicture}
 }{}
 
