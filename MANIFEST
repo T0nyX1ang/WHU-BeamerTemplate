@@ -15,9 +15,10 @@
   The Current Maintainer of this work is Tony Xiang.
 
   This work consists of the files: beamerthemeWHUSpot.sty,
-  								   all files inside ./models folder
-  								   demo.tex
-  								   LICENSE
-  								   MANIFEST
-  								   README.md
-  and derived files:			   demo.pdf
+                                   all files inside ./models folder,
+                                   all files inside ./colors folder,
+                                   demo.tex
+                                   LICENSE
+                                   MANIFEST
+                                   README.md
+  and derived files:               demo.pdf
