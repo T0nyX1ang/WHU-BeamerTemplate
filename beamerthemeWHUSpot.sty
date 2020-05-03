@@ -13,6 +13,10 @@
 
 \usefonttheme[onlymath]{serif}
 
+\providecommand{\usecolorstyle}[1]{
+    \input{./colors/#1.tex}
+} % provide a command for color styles
+
 \input{./models/building.tex}
 \input{./models/petal.tex}
 \input{./models/cage.tex}
