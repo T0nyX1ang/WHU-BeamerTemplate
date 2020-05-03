@@ -50,7 +50,6 @@
         \item 用 $\backslash \mbox{usetheme\{WHUSpot\}}$ 即可载入模板，当然也需要将 beamerthemeWHUSpot.sty 放在合适的地方（其实在同目录下就行）.
         \item 请使用 \hologo{XeLaTeX} 编译，一般而言使用\alert{TeX Live 2018}及以上版本能够保证正常编译（当然稍微低版本的TeX Live应该也没问题）.
         \item 本人\alert{没有设计subsection及以下层次}的页面，仅在有section时调用一个特别的页面，请谨慎组织标题内容.
-        \item 请不要轻易改变配色方案.
     \end{itemize}
 \end{frame}
 
@@ -146,6 +145,14 @@
     \end{minted}
 \end{frame}
 
+\begin{frame}[fragile]
+	\frametitle{自定义}
+	\begin{itemize}
+		\item 配色：目前包括一套配色方案，详见~\verb|colors|文件夹，自定义配色方案需要给出相应参数的定义.
+		\item 绘图模型：目前包括四个模型，详见~\verb|models|文件夹，引用模型需要传入相应参数，并置于~\verb|tikzpicture|环境中.
+	\end{itemize}
+\end{frame}
+
 \section{设计灵感}
 \begin{frame}
     \frametitle{配色}
@@ -173,71 +180,71 @@
     \frametitle{老图书馆不是一日建成的}
     \begin{figure}
     \centering
-    \def\buildingcolor{蟹壳青}
+    \def\bdcolors{蟹壳青}
     \begin{tikzpicture}[scale=.4]
         \useasboundingbox (-0.2, 0.5) rectangle (0.05, 10);
-        \fill[\buildingcolor] (-1, 0) rectangle (1, 2);
-        \draw[\buildingcolor] (-1.2, 0) rectangle (1.2, 2.2);
-        \draw[line width=2.5pt,\buildingcolor] (-6, 0) -- (6, 0);
+        \fill[\bdcolors] (-1, 0) rectangle (1, 2);
+        \draw[\bdcolors] (-1.2, 0) rectangle (1.2, 2.2);
+        \draw[line width=2.5pt,\bdcolors] (-6, 0) -- (6, 0);
         \foreach \x in {1,...,5}
         {
-            \draw[line width=1.5pt, \buildingcolor] (-4.5 - \x * 0.2, -\x / 3) -- (4.5 + \x * 0.2, -\x / 3);
+            \draw[line width=1.5pt, \bdcolors] (-4.5 - \x * 0.2, -\x / 3) -- (4.5 + \x * 0.2, -\x / 3);
         }
-        \fill[\buildingcolor] (-12, -2) -- (12, -2) -- (11.5, -2.2) -- (-11.5, -2.2) -- cycle;
-        \fill[\buildingcolor] (-11.3, -2.28) -- (11.3, -2.28) -- (10.8, -2.48) -- (-10.8, -2.48) -- cycle;
-        \fill[\buildingcolor] (-6, -2.56) -- (6, -2.56) -- (5.5, -2.76) -- (-5.5, -2.76) -- cycle;
+        \fill[\bdcolors] (-12, -2) -- (12, -2) -- (11.5, -2.2) -- (-11.5, -2.2) -- cycle;
+        \fill[\bdcolors] (-11.3, -2.28) -- (11.3, -2.28) -- (10.8, -2.48) -- (-10.8, -2.48) -- cycle;
+        \fill[\bdcolors] (-6, -2.56) -- (6, -2.56) -- (5.5, -2.76) -- (-5.5, -2.76) -- cycle;
         \pause
 
         \foreach \i in {-1, 1} 
-            \filldraw[\buildingcolor] (-5.8 * \i, 0) -- (-5.8 * \i, -0.3) -- (-5.5 * \i, -0.3) -- (-6.4 * \i, -1.8) -- (-11.4 * \i, -1.8) -- (-10.68 * \i, -0.6) -- (-10.5 * \i, -0.6) -- (-10.5 * \i, 3.5) -- (-6 * \i, 3.5) -- (-6 * \i, 0) -- cycle;
+            \filldraw[\bdcolors] (-5.8 * \i, 0) -- (-5.8 * \i, -0.3) -- (-5.5 * \i, -0.3) -- (-6.4 * \i, -1.8) -- (-11.4 * \i, -1.8) -- (-10.68 * \i, -0.6) -- (-10.5 * \i, -0.6) -- (-10.5 * \i, 3.5) -- (-6 * \i, 3.5) -- (-6 * \i, 0) -- cycle;
         \foreach \j in {8.97, 7.72, 6.47}
             \filldraw[rounded corners, color=缟] (\j, 2.4) rectangle (\j+ 1, 3);
         \foreach \j in {-8.97, -7.72, -6.47}
             \filldraw[rounded corners, color=缟] (\j, 2.4) rectangle (\j- 1, 3);
         \pause
 
-        \filldraw[\buildingcolor] (-10.5, 3.9) rectangle (10.5, 4.6);
-        \filldraw[\buildingcolor] (-10.5, 3.5) rectangle (10.5, 3.7);
+        \filldraw[\bdcolors] (-10.5, 3.9) rectangle (10.5, 4.6);
+        \filldraw[\bdcolors] (-10.5, 3.5) rectangle (10.5, 3.7);
         \foreach \k in {-5.6, -3.1, 3.5}
-            \filldraw[\buildingcolor] (\k, 0) -- (\k, 3.9) -- (\k + 0.5, 3.9) -- (\k + 0.5, 3.5) -- (\k + 0.2, 3.3) -- (\k + 0.2, 0) -- cycle;
+            \filldraw[\bdcolors] (\k, 0) -- (\k, 3.9) -- (\k + 0.5, 3.9) -- (\k + 0.5, 3.5) -- (\k + 0.2, 3.3) -- (\k + 0.2, 0) -- cycle;
         \foreach \k in {5.6, 3.1, -3.5}
-            \filldraw[\buildingcolor] (\k, 0) -- (\k, 3.9) -- (\k - 0.5, 3.9) -- (\k - 0.5, 3.5) -- (\k - 0.2, 3.3) -- (\k - 0.2, 0) -- cycle;
-        \filldraw[\buildingcolor] (-0.25, 3.7) rectangle (0.25, 4);
+            \filldraw[\bdcolors] (\k, 0) -- (\k, 3.9) -- (\k - 0.5, 3.9) -- (\k - 0.5, 3.5) -- (\k - 0.2, 3.3) -- (\k - 0.2, 0) -- cycle;
+        \filldraw[\bdcolors] (-0.25, 3.7) rectangle (0.25, 4);
         \pause
 
-        \filldraw[\buildingcolor] (-10.5, 4.8) [out=165,in=-78]to (-12.8, 7) [out=-75,in=-180]to (-10.8, 6) [out=0,in=-95]to (-8.9, 8) [out=-85,in=-180]to (-6.8, 5.9) [out=0,in=-120]to (-5, 6.8) [out=-95,in=15]to (-6, 5.0) -- (-6, 4.8) -- cycle; 
-        \filldraw[\buildingcolor] (10.5, 4.8) [out=15,in=-102]to (12.8, 7) [out=-105,in=0]to (10.8, 6) [out=180,in=-85]to (8.9, 8) [out=-95,in=0]to (6.8, 5.9) [out=180,in=-60]to (5, 6.8) [out=-85,in=165]to (6, 5.0) -- (6, 4.8) -- cycle;
-        \filldraw[\buildingcolor] (-6, 4.8) rectangle (6, 5.0);
+        \filldraw[\bdcolors] (-10.5, 4.8) [out=165,in=-78]to (-12.8, 7) [out=-75,in=-180]to (-10.8, 6) [out=0,in=-95]to (-8.9, 8) [out=-85,in=-180]to (-6.8, 5.9) [out=0,in=-120]to (-5, 6.8) [out=-95,in=15]to (-6, 5.0) -- (-6, 4.8) -- cycle; 
+        \filldraw[\bdcolors] (10.5, 4.8) [out=15,in=-102]to (12.8, 7) [out=-105,in=0]to (10.8, 6) [out=180,in=-85]to (8.9, 8) [out=-95,in=0]to (6.8, 5.9) [out=180,in=-60]to (5, 6.8) [out=-85,in=165]to (6, 5.0) -- (6, 4.8) -- cycle;
+        \filldraw[\bdcolors] (-6, 4.8) rectangle (6, 5.0);
         \foreach \i in {-1, 1}
         {
-            \filldraw[\buildingcolor] (-8.4 * \i, 6.9) -- (-5.1 * \i, 6.9) -- (-5.3 * \i, 6.6) -- (-8.1 * \i, 6.6) -- cycle;
-            \filldraw[\buildingcolor] (-7.99 * \i, 6.45) -- (-5.4 * \i, 6.45) -- (-5.52 * \i, 6.35) -- (-7.87 * \i, 6.35) -- cycle;     
+            \filldraw[\bdcolors] (-8.4 * \i, 6.9) -- (-5.1 * \i, 6.9) -- (-5.3 * \i, 6.6) -- (-8.1 * \i, 6.6) -- cycle;
+            \filldraw[\bdcolors] (-7.99 * \i, 6.45) -- (-5.4 * \i, 6.45) -- (-5.52 * \i, 6.35) -- (-7.87 * \i, 6.35) -- cycle;     
         }
-        \filldraw[\buildingcolor] (-4.88, 6.9) -- (4.88, 6.9) -- (4.9, 6.6) -- (-4.9, 6.6) -- cycle;
-        \filldraw[\buildingcolor] (-4.93, 6.45) -- (4.93, 6.45) -- (4.95, 6.35) -- (-4.95, 6.35) -- cycle;
+        \filldraw[\bdcolors] (-4.88, 6.9) -- (4.88, 6.9) -- (4.9, 6.6) -- (-4.9, 6.6) -- cycle;
+        \filldraw[\bdcolors] (-4.93, 6.45) -- (4.93, 6.45) -- (4.95, 6.35) -- (-4.95, 6.35) -- cycle;
         \pause
 
         \foreach \i in {-1, 1}
         {
-            \filldraw[\buildingcolor] (-5.5 * \i, 5.1) -- (-5.5 * \i, 5.2) -- (-5.3 * \i, 5.3) -- (-5.3 * \i, 5.1) -- cycle;
-            \filldraw[\buildingcolor] (-5.2 * \i, 5.1) -- (-5.2 * \i, 5.35) -- (-5.05 * \i, 5.85) -- (-5.05 * \i, 5.1) -- cycle;
+            \filldraw[\bdcolors] (-5.5 * \i, 5.1) -- (-5.5 * \i, 5.2) -- (-5.3 * \i, 5.3) -- (-5.3 * \i, 5.1) -- cycle;
+            \filldraw[\bdcolors] (-5.2 * \i, 5.1) -- (-5.2 * \i, 5.35) -- (-5.05 * \i, 5.85) -- (-5.05 * \i, 5.1) -- cycle;
         }
         \foreach \i in {0,...,24}
-            \filldraw[\buildingcolor] (-4.9 + \i * 0.4, 5.1) rectangle (-4.9 + \i * 0.4 + 0.2, 6.25);
+            \filldraw[\bdcolors] (-4.9 + \i * 0.4, 5.1) rectangle (-4.9 + \i * 0.4 + 0.2, 6.25);
         \pause
 
-        \filldraw[\buildingcolor] (-5, 7.7) [out=180,in=-90]to (-6.2, 8.5) [out=-30,in=-150]to (-4.4, 8.5) -- (-4.5, 9.6) to (-3.5, 8.8) -- (-2.7, 9.1) -- (-2.7, 10.2) -- (2.7, 10.2) -- (2.7, 9.1) -- (3.5, 8.8) to (4.5, 9.6) -- (4.4, 8.5) [out=-30,in=-150]to (6.2, 8.5) [out=-90,in=0]to (5, 7.7) -- (3.1, 8.2) -- (-3.1, 8.2) -- cycle;
-        \filldraw[rounded corners=1pt,\buildingcolor] (-2.9, 10.0) rectangle (-2.5, 10.4);
-        \filldraw[rounded corners=1pt,\buildingcolor] (2.9, 10.0) rectangle (2.5, 10.4);
+        \filldraw[\bdcolors] (-5, 7.7) [out=180,in=-90]to (-6.2, 8.5) [out=-30,in=-150]to (-4.4, 8.5) -- (-4.5, 9.6) to (-3.5, 8.8) -- (-2.7, 9.1) -- (-2.7, 10.2) -- (2.7, 10.2) -- (2.7, 9.1) -- (3.5, 8.8) to (4.5, 9.6) -- (4.4, 8.5) [out=-30,in=-150]to (6.2, 8.5) [out=-90,in=0]to (5, 7.7) -- (3.1, 8.2) -- (-3.1, 8.2) -- cycle;
+        \filldraw[rounded corners=1pt,\bdcolors] (-2.9, 10.0) rectangle (-2.5, 10.4);
+        \filldraw[rounded corners=1pt,\bdcolors] (2.9, 10.0) rectangle (2.5, 10.4);
         \foreach \i in {-1, 1}
-            \filldraw[rounded corners=3pt,rotate around={13 * \i:(-4.7 * \i,7.1)},\buildingcolor] (-4.7 * \i, 7.1) rectangle (-3.1 * \i, 7.5); 
+            \filldraw[rounded corners=3pt,rotate around={13 * \i:(-4.7 * \i,7.1)},\bdcolors] (-4.7 * \i, 7.1) rectangle (-3.1 * \i, 7.5); 
         \foreach \i in {0,...,3}
-            \filldraw[rounded corners=3pt, \buildingcolor] (-2.95 + \i * 1.5, 7.5) rectangle (-1.55 + \i * 1.5, 7.9);
+            \filldraw[rounded corners=3pt, \bdcolors] (-2.95 + \i * 1.5, 7.5) rectangle (-1.55 + \i * 1.5, 7.9);
         \pause
 
-        \filldraw[\buildingcolor] (-0.3, 10.2) rectangle (0.3, 10.3);
-        \filldraw[\buildingcolor] (-0.3, 10.4) [bend left=10]to (-0.3, 11.2) -- (-0.2, 11.3) -- (-0.3, 11.4) -- (-0.3, 11.6) -- (0.3, 11.6) -- (0.3, 11.4) -- (0.2, 11.3) -- (0.3, 11.2) [bend left=10]to (0.3, 10.4) -- cycle;
-        \filldraw[\buildingcolor] (-0.2, 11.7) rectangle (0.2, 11.8);
+        \filldraw[\bdcolors] (-0.3, 10.2) rectangle (0.3, 10.3);
+        \filldraw[\bdcolors] (-0.3, 10.4) [bend left=10]to (-0.3, 11.2) -- (-0.2, 11.3) -- (-0.3, 11.4) -- (-0.3, 11.6) -- (0.3, 11.6) -- (0.3, 11.4) -- (0.2, 11.3) -- (0.3, 11.2) [bend left=10]to (0.3, 10.4) -- cycle;
+        \filldraw[\bdcolors] (-0.2, 11.7) rectangle (0.2, 11.8);
     \end{tikzpicture}
     \end{figure}
 \end{frame}
@@ -256,31 +263,9 @@
     \frametitle{联系，bug反馈，授权}
     \begin{itemize}
         \item 最新版本在 \\ \url{https://github.com/T0nyX1ang/WHU-BeamerTemplate} 上发布.
-        \item bug反馈可以直接在Github上发issue.
+        \item 可以直接在Github上发issue提出bug反馈与功能建议.
         \item 使用LPPL-1.3c（及以后版本）授权.
     \end{itemize}
 \end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{杂项}
-    \begin{itemize}
-        \item 本来想用樱花实现一个更复杂的progress bar的，最后放弃了.
-        \item titlepage页\alert{默认没有}frametitle.
-        \item 樱花（花瓣）和老图书馆被封装为独立的指令，详见~\verb|./models| 文件夹，使用时需要放在~\verb|tikzpicture|环境中，通过传入不同参数可以得到不同效果，见最后一页. \hyperlink{final}{\beamerbutton{Final}}
-    \end{itemize}
-\end{frame}
-
-\begin{frame}[label=final]
-\begin{figure}
-    \centering
-    \begin{tikzpicture}[scale=.4]
-        \drawbuilding{蟹壳青}{缟}
-        \begin{scope}[xshift=0cm,yshift=12.5cm,scale=.2]
-            \drawflower{5}{1}
-        \end{scope}
-    \end{tikzpicture}
-\end{figure}
-\end{frame}
-
 
 \end{document}
