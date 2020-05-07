@@ -42,19 +42,6 @@
 \setbeamercolor{enumerate subitem}{fg=normalcolor}
 \setbeamercolor{enumerate subsubitem}{fg=normalcolor}
 
-\def\progressbar{
-    % draw a vertical progress bar here
-    \begin{tikzpicture}
-        % construct several paths to make room for the sakura
-        \path (-0.5cm, 0) -- (0.5cm, 0); % make room for progressbar
-        \drawprogressbarv{verticalpbarcolor}{\paperheight}{\insertdocumentendpage}{\insertsectionstartpage}{\insertsectionendpage}{\insertpagenumber}{\verticalpbartype}
-        \node[rounded corners, fill=standoutcolor, draw=backgroundcolor, text width=4.5em, align=center, inner sep=2pt, text=normalcolorreverse, anchor=east, opacity=.85] at (0.405, -0.85\paperheight-4.5) %rounded rectangle west arc=none
-        {
-            \insertframenumber\ /\ \inserttotalframenumber
-        };
-    \end{tikzpicture}
-}
-
 \AtBeginSection[] % Do nothing for \section*
 {
     \sectionpage
@@ -71,6 +58,15 @@
 {
     \includegraphics[width=1cm,height=1cm]{./logos/whulogoblack.eps} \\
     \progressbar
+    \begin{tikzpicture}
+        % construct several paths to make room for the sakura
+        \path (-0.5cm, 0) -- (0.5cm, 0); % make room for progressbar
+        \drawprogressbarv{verticalpbarcolor}{\paperheight}{\insertdocumentendpage}{\insertsectionstartpage}{\insertsectionendpage}{\insertpagenumber}{\verticalpbartype}
+        \node[rounded corners, fill=standoutcolor, draw=backgroundcolor, text width=4.5em, align=center, inner sep=2pt, text=normalcolorreverse, anchor=east, opacity=.85] at (0.405, -0.85\paperheight-4.5) %rounded rectangle west arc=none
+        {
+            \insertframenumber\ /\ \inserttotalframenumber
+        };
+    \end{tikzpicture}
 }
 
 \setbeamertemplate{title page}{
