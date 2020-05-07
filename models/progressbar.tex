@@ -7,7 +7,7 @@
 \providecommand{\drawprogressbarh}[7]{
     % draw a horizontal progressbar
     % required parameter(s): #1 the color of progressbar
-    %                        #2 length of progressbar (factor = 0.85/0.8)
+    %                        #2 length of paper height (factor = 0.85/0.75)
     %                        #3 total pages
     %                        #4 start page of current section
     %                        #5 end page of current section
@@ -15,8 +15,8 @@
     %                        #7 sakura type
 
     \draw[line width=0.2pt, color=#1] (0, 0) -- (.85#2, 0);
-    \draw[line width=0.8pt, color=#1] (0.8 / #3 * #2 * #4 + 0.4 / #3 * #2, 0) -- (0.8 / #3 * #2 * #5 + 0.4 / #3 * #2, 0); % extinguish current section by line width
-    \begin{scope}[xshift=0.8 / #3 * #2 * #6 + 0.4 / #3 * #2, scale=.05]
+    \draw[line width=0.8pt, color=#1] (0.05 * #2 + 0.75 / #3 * #2 * #4, 0) -- (0.05 * #2 + 0.75 / #3 * #2 * #5, 0); % extinguish current section by line width
+    \begin{scope}[xshift=0.05 * #2 + 0.75 / #3 * #2 * #6, scale=.05]
         \drawflower{5}{#7}
     \end{scope}
 }
@@ -24,7 +24,7 @@
 \providecommand{\drawprogressbarv}[7]{
     % draw a horizontal progressbar
     % required parameter(s): #1 the color of progressbar
-    %                        #2 length of progressbar (factor = 0.85/0.8)
+    %                        #2 length of paper height (factor = 0.85/0.75)
     %                        #3 total pages
     %                        #4 start page of current section
     %                        #5 end page of current section
@@ -32,8 +32,8 @@
     %                        #7 sakura type
 
     \draw[line width=0.2pt, color=#1] (0, 0) -- (0, -0.85#2);
-    \draw[line width=0.8pt, color=#1] (0, -0.8 / #3 * #2 * #4 - 0.4 / #3 * #2) -- (0, -0.8 / #3 * #2 * #5 - 0.4 / #3 * #2);
-    \begin{scope}[yshift=-0.8 / #3 * #2 * #6 - 0.4 / #3 * #2, scale=.05]
+    \draw[line width=0.8pt, color=#1] (0, -0.05 * #2 - 0.75 / #3 * #2 * #4) -- (0, -0.05 * #2 - 0.75 / #3 * #2 * #5);
+    \begin{scope}[yshift=-0.05 * #2 - 0.75 / #3 * #2 * #6, scale=.05]
         \drawflower{5}{#7}
     \end{scope}
 
