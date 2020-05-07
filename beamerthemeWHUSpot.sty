@@ -16,8 +16,11 @@
 \usefonttheme[onlymath]{serif}
 
 \providecommand{\usecolorstyle}[1]{
-    \import{colors}{#1}
+    \ifthenelse{\isempty{#1}} % condition
+    {\import{colors}{default}} % set default color style
+    {\import{colors}{#1}} % set user defined color style
 } % provide a command for color styles
+\usecolorstyle{}
 
 \import{models}{building}
 \import{models}{petal}
