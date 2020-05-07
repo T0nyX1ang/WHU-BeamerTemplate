@@ -40,23 +40,3 @@ jobs:
       with:
         name: demo-document-default
         path: demo-default.pdf
-
-    # Change file to dark mode
-    - name: Dark mode preparations
-      run: sed 's/usecolorstyle{default}/usecolorstyle{dark}/g' demo-default.tex > demo-dark.tex
-
-    # Compile the LaTeX document with XeLaTeX
-    - name: Github Action for LaTeX (Dark mode)
-      uses: xu-cheng/latex-action@1.2.1
-      with:
-        root_file: demo-dark.tex
-        args: -xelatex -file-line-error -interaction=nonstopmode -shell-escape
-        extra_system_packages: "py-pygments"
-
-    # Upload demo to artifacts if the demo is compiled successfully
-    - name: Upload artifacts (Dark mode)
-      uses: actions/upload-artifact@v1
-      if: success()
-      with:
-        name: demo-document-dark
-        path: demo-dark.pdf
