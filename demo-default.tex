@@ -19,7 +19,6 @@
 \usetikzlibrary{calc}
 \usetheme{WHUSpot}
 \usefonttheme{serif}
-\usecolorstyle{default}
 \mode<presentation>
 
 \title{武汉大学主题 Beamer 模板 - WHUSpot}
@@ -150,9 +149,10 @@
 \begin{frame}[fragile]
     \frametitle{自定义}
     \begin{itemize}
-        \item 配色：目前包括两套配色方案~\verb|default| 和~\verb|dark| ，详见~\verb|colors| 文件夹，自定义配色方案需要给出相应参数的定义，引用配色方案可以使用~\verb|\usecolorstyle{...}| 命令.
+        \item 配色：目前包括两套配色方案~\verb|default|（默认加载）和~\verb|dark| ，详见~\verb|colors| 文件夹，自定义配色方案需要给出相应参数的定义，引用配色方案可以使用~\verb|\usecolorstyle{...}| 命令.
         \item 绘图模型：目前包括四个模型，详见~\verb|models| 文件夹，引用模型需要传入相应参数，并置于~\verb|tikzpicture| 环境中.
         \item Logo：默认为空，一般建议使用新定义的~\verb|Plogo{filepath}|命令插入logo，~\verb|filepath|代表logo的路径.
+        \item 全局安装（不推荐）：将models, colors, beamerthemeWHUSpot.sty, import.sty置于~\verb|$TEXMF/tex/latex/beamertheme-WHUSpot|目录下，然后执行~\verb|texhash|命令即可.
     \end{itemize}
 \end{frame}
 
