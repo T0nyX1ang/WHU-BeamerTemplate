@@ -7,6 +7,7 @@
 
 \ProvidesPackage{beamerthemeWHUSpot}
 \RequirePackage{tikz}
+\RequirePackage{xifthen}
 \RequirePackage{import}
 \usetikzlibrary{calc}
 \RequirePackage{cncolours}
@@ -52,12 +53,20 @@
     \sectionpage
 }
 
+\newcommand\Plogo[1] % Insert a logo based on its file path
+{
+    \ifthenelse{\isempty{#1}} % condition
+    {\def\insertPlogo{\vskip1cm}} % if logo path is not defined, create a vertical skip
+    {\def\insertPlogo{\includegraphics[width=1cm,height=1cm]{#1}}} % if logo path is defined, create it
+}
+\Plogo{} % call the default function
+
 \setbeamertemplate{frametitle}[shadow theme]
 \setbeamersize{sidebar width left=1cm}
 \setbeamertemplate{sidebar left}
 {
-    \includegraphics[width=1cm,height=1cm]{./logos/whulogoblack.eps} \\
-    \progressbar
+    \insertPlogo
+
     \begin{tikzpicture}
         % construct several paths to make room for the sakura
         \path (-0.5cm, 0) -- (0.5cm, 0); % make room for progressbar
