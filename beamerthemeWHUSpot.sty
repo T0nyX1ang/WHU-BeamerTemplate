@@ -7,6 +7,7 @@
 
 \ProvidesPackage{beamerthemeWHUSpot}
 \RequirePackage{tikz}
+\RequirePackage{import}
 \usetikzlibrary{calc}
 \RequirePackage{cncolours}
 \RequirePackage{pgfmath}
@@ -14,13 +15,13 @@
 \usefonttheme[onlymath]{serif}
 
 \providecommand{\usecolorstyle}[1]{
-    \input{./colors/#1.tex}
+    \import{colors}{#1}
 } % provide a command for color styles
 
-\input{./models/building.tex}
-\input{./models/petal.tex}
-\input{./models/cage.tex}
-\input{./models/progressbar.tex} % please put this after petal.tex
+\import{models}{building}
+\import{models}{petal}
+\import{models}{cage}
+\import{models}{progressbar} % please put this after petal.tex
 
 \setbeamercolor{normal text}{fg=normalcolor}
 \setbeamercolor{alerted text}{fg=alertedcolor}
