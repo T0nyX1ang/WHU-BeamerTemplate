@@ -16,7 +16,7 @@ This beamer template is designed for slides using beautiful spots in Wuhan Unive
 ## Further Customizations
 * Building this project on Overleaf (With XeLaTeX) is also acceptable.
 * If you want to globally install this template, please create a folder named `beamertheme-WHUSpot`, put `/colors`, `/models`, `beamerthemeWHUSpot.sty` and `import.sty` into it, move this folder inside `$TEXMF/tex/latex` folder and run `texhash`.
-* If you want to design your own color styles, please refer to `/color` folder and provide all of the required commands.
+* If you want to design your own color styles, please refer to `/colors` folder and provide all of the required commands.
 
 ## Contribution
 
